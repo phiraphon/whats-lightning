@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WHAT'S LIGHTNING? — สื่อการเรียนรู้ปรากฏการณ์ฟ้าผ่า</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Thai:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════
+   DESIGN SYSTEM
+════════════════════════════════════════════ */
+:root{
+  --bg:#06060A;--sf:#0D0D15;--card:#101018;
+  --b1:rgba(255,255,255,.06);--b2:rgba(255,255,255,.12);
+  --cy:#00E5FF;--ye:#FFE600;--or:#FF5C00;
+  --rd:#FF2D55;--pu:#BF5FFF;--gn:#00FF88;
+  --wh:#F0EEF8;--mu:rgba(255,255,255,.32);--mu2:rgba(255,255,255,.55);
+  --nav:52px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--wh);font-family:'Noto Sans Thai',sans-serif;overflow-x:hidden;line-height:1.65}
+
+/* bilingual */
+.th{display:block}.en{display:none}
+span.th{display:inline}span.en{display:none}
+html.en .th,html.en span.th{display:none!important}
+html.en .en{display:block}html.en span.en{display:inline}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);
+  background:rgba(6,6,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--b1);display:flex;align-items:center;
+  justify-content:space-between;padding:0 40px}
+.nav-logo{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:3px;color:var(--wh);text-decoration:none}
+.nav-bolt{color:var(--cy)}
+.lang-wrap{display:flex;align-items:center}
+.lang-btn{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:2px;
+  padding:4px 10px;border-radius:3px;border:1px solid transparent;background:transparent;
+  color:var(--mu);cursor:pointer;transition:color .15s ease,border-color .15s ease}
+.lang-btn.active{border-color:var(--cy);color:var(--cy)}
+.lang-btn:hover:not(.active){color:var(--mu2)}
+.lang-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.25);margin:0 6px;pointer-events:none}
+.nav-prog{position:absolute;bottom:0;left:0;height:2px;background:var(--cy);width:0;will-change:width}
+
+/* ── HERO ── */
+#hero{height:100vh;min-height:600px;display:flex;align-items:center;
+  justify-content:center;position:relative;overflow:hidden}
+.hero-bolt{position:absolute;right:-3%;top:50%;transform:translateY(-52%);
+  width:44%;height:90%;pointer-events:none;opacity:1}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:900px;height:600px;
+  background:radial-gradient(ellipse,rgba(0,229,255,.07) 0%,transparent 65%);
+  pointer-events:none}
+.hero-c{position:relative;z-index:2;text-align:center;padding:0 20px;max-width:960px}
+.hero-ey{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:4px;
+  color:var(--mu);margin-bottom:28px;animation:aUp .9s .3s both}
+.hero-h{font-family:'Bebas Neue',sans-serif;letter-spacing:4px;line-height:.88;margin-bottom:36px}
+.h-w{display:block;font-size:clamp(72px,12vw,158px);color:#fff}
+.h-l{display:block;font-size:clamp(72px,12vw,158px);color:var(--cy);
+  text-shadow:0 0 60px rgba(0,229,255,.38),0 0 120px rgba(0,229,255,.16);
+  animation:aUp .9s .5s both}
+.hero-sub{font-size:clamp(14px,1.6vw,17px);color:rgba(255,255,255,.45);
+  max-width:480px;margin:0 auto 40px;line-height:1.9;animation:aUp .9s .8s both}
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:10px;animation:aFade 1s 1.1s both}
+.cta-row{display:flex;align-items:center;gap:16px}
+.cta-line{width:38px;height:1px;background:rgba(255,255,255,.2)}
+.cta-txt{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:5px;color:rgba(255,255,255,.28)}
+.scroll-ind{display:flex;flex-direction:column;align-items:center;gap:6px;animation:aBounce 2s 1.5s infinite}
+.scroll-txt{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:4px;color:rgba(255,255,255,.2)}
+.scroll-ln{width:1px;height:30px;background:linear-gradient(rgba(255,255,255,.2),transparent)}
+@keyframes aUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes aFade{from{opacity:0}to{opacity:1}}
+@keyframes aBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ── SECTIONS ── */
+section{padding:100px 7%;position:relative}
+.sl{display:flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;
+  font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.28);margin-bottom:20px}
+.sl::after{content:'';flex:1;height:1px;background:var(--sc,rgba(255,255,255,.07));opacity:.35}
+.st{font-family:'Bebas Neue',sans-serif;font-size:clamp(46px,7.5vw,88px);
+  letter-spacing:3px;line-height:.95;color:var(--sc,#fff);margin-bottom:10px}
+.sa{height:3px;background:var(--sc,#fff);width:110px;margin-bottom:40px}
+.sb{font-size:clamp(14px,1.6vw,17px);color:rgba(255,255,255,.65);max-width:620px;line-height:1.9}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.rv.on{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.22s}.rv.d3{transition-delay:.32s}.rv.d4{transition-delay:.42s}
+
+/* ── 01 ANATOMY ── */
+#anatomy{--sc:var(--cy);background:var(--bg)}
+.an-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:16px}
+.facts{display:flex;flex-direction:column;gap:2px}
+.fc{background:var(--card);border:1px solid var(--b1);border-left:3px solid var(--cy);padding:18px 20px}
+.fc-val{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3.8vw,42px);
+  letter-spacing:2px;color:#fff;line-height:1;margin-bottom:5px}
+.fc-val .u{font-size:.44em;color:var(--cy);letter-spacing:1px}
+.fc-lbl{font-size:15px;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:8px}
+.fc-desc{font-size:14px;color:rgba(255,255,255,.62);line-height:1.8}
+
+/* ── 02 STEPS ── */
+.sw{height:900vh;position:relative}
+.ss{position:sticky;top:var(--nav);height:calc(100vh - var(--nav));
+  background:var(--bg);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.s-wm{position:absolute;right:-.05em;bottom:-.08em;font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(160px,26vw,320px);color:rgba(255,230,0,.028);line-height:1;
+  pointer-events:none;letter-spacing:-2px}
+.s-fig{position:absolute;top:22px;right:44px;font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.1)}
+.s-dots{position:absolute;left:4.5%;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:10px}
+.sd{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.14);
+  cursor:pointer;transition:background .3s,transform .3s}
+.sd.a{background:var(--ye);transform:scale(1.6)}
+.s-inner{display:grid;grid-template-columns:5fr 6fr;gap:44px;
+  max-width:1100px;width:100%;padding:0 6% 0 9%}
+.s-left{display:flex;flex-direction:column}
+.s-pr{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;
+  color:rgba(255,255,255,.28);margin-bottom:10px}
+.s-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(74px,11vw,128px);
+  letter-spacing:2px;line-height:1;color:var(--ye);transition:opacity .3s}
+.s-t{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,4.5vw,54px);
+  letter-spacing:2px;line-height:1;color:#fff;margin-bottom:6px}
+.s-ul{width:64px;height:2px;background:var(--ye);margin-bottom:22px}
+.s-bd{font-size:clamp(14px,1.5vw,16px);color:rgba(255,255,255,.7);
+  line-height:2;margin-bottom:22px;max-width:460px}
+.s-chips{display:flex;flex-direction:column;gap:8px}
+.s-chip{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.5px;
+  padding:8px 13px;border-left:2px solid var(--ye);background:rgba(255,230,0,.05);
+  color:rgba(255,255,255,.78)}
+.s-chip b{color:var(--ye)}
+.s-vis{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.06);
+  aspect-ratio:16/11;overflow:hidden;position:relative}
+#sc{width:100%;height:100%;display:block}
+
+/* ── 03 CUMULO ── */
+#cumulo{--sc:var(--or);background:var(--sf)}
+.cu-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+#cc{width:100%;aspect-ratio:4/3;display:block;background:#000;border:1px solid var(--b1)}
+.cu-inf{display:flex;flex-direction:column;gap:22px}
+.ci{display:flex;gap:14px;align-items:flex-start}
+.ci-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.ci-lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;
+  color:rgba(255,255,255,.5);margin-bottom:5px}
+.ci-txt{font-size:14px;color:rgba(255,255,255,.68);line-height:1.88}
+
+/* ── 04 LEADER ── */
+#leader{--sc:var(--cy);background:var(--bg)}
+.ld-wrap{max-width:1040px}
+.ld-cw{position:relative;margin-top:28px}
+#lc{width:100%;height:440px;display:block;background:#000;border:1px solid var(--b1);cursor:pointer}
+.cv-hint{position:absolute;bottom:14px;right:14px;font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.18)}
+.ld-desc{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ld-box{background:var(--card);border:1px solid var(--b1);border-left:2px solid var(--cy);padding:14px 16px}
+.ld-box-t{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;
+  color:var(--cy);margin-bottom:6px}
+.ld-box-b{font-size:13px;color:rgba(255,255,255,.68);line-height:1.78}
+
+/* ── 05 RETURN STROKE ── */
+#return-sec{--sc:var(--rd);background:var(--sf)}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.rv-vis{position:relative;height:390px;background:#000;border:1px solid var(--b1);
+  overflow:hidden;cursor:pointer}
+.r-ch{position:absolute;left:50%;top:0;bottom:0;width:1px;margin-left:-.5px;
+  background:linear-gradient(rgba(255,45,85,.25),rgba(0,229,255,.15))}
+.r-bar{position:absolute;left:50%;bottom:0;width:3px;height:0;margin-left:-1.5px;
+  background:#fff;box-shadow:0 0 14px #fff,0 0 28px var(--rd);transform-origin:bottom}
+.r-glo{position:absolute;inset:0;
+  background:radial-gradient(ellipse,rgba(255,45,85,.22),transparent 62%);opacity:0;pointer-events:none}
+.r-wh{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.r-lbl{position:absolute;bottom:14px;right:14px;font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.2)}
+.r-ent{position:absolute;top:14px;left:14px;font-family:'IBM Plex Mono',monospace;
+  font-size:9px;letter-spacing:2px;color:rgba(255,45,85,.35)}
+.r-stats{display:flex;flex-direction:column;gap:10px}
+.rst{background:var(--card);border:1px solid var(--b1);border-left:3px solid var(--rd);padding:16px 18px}
+.rst-v{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--rd);
+  letter-spacing:2px;line-height:1;margin-bottom:4px}
+.rst-l{font-size:13px;color:rgba(255,255,255,.58);line-height:1.65}
+
+/* ── 06 FRACTAL ── */
+#fractal-sec{--sc:var(--pu);background:var(--bg)}
+#fc{width:100%;height:480px;display:block;background:#000;border:1px solid var(--b1);
+  cursor:pointer;margin-top:28px}
+.fr-info{display:flex;gap:30px;margin-top:14px;flex-wrap:wrap}
+.fi{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;
+  color:rgba(255,255,255,.28)}
+.fi b{color:var(--pu)}
+
+/* ── 07 ENERGY ── */
+#energy{--sc:var(--ye);background:var(--sf)}
+.eg-main{display:grid;grid-template-columns:160px 1fr;gap:44px;
+  align-items:stretch;margin-top:28px;position:relative}
+.eg-sl{display:flex;flex-direction:column;align-items:center;gap:10px}
+.eg-sl-top{text-align:center}
+.eg-sl-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--ye);
+  letter-spacing:2px;line-height:1}
+.eg-sl-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;
+  color:rgba(255,255,255,.25)}
+.eg-tw{flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:280px}
+.eg-tk{width:2px;background:rgba(255,255,255,.1);position:relative;cursor:ns-resize;
+  user-select:none;touch-action:none;height:100%}
+.eg-tf{position:absolute;bottom:0;left:0;right:0;background:var(--ye);transition:height .25s ease}
+.eg-tick{position:absolute;right:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;
+  letter-spacing:1px;color:rgba(255,255,255,.18);transform:translateY(50%);white-space:nowrap}
+.eg-hnd{position:absolute;left:50%;transform:translateX(-50%);width:26px;height:26px;
+  border-radius:50%;background:var(--ye);border:2px solid var(--bg);
+  display:flex;align-items:center;justify-content:center;z-index:2;cursor:ns-resize;
+  box-shadow:0 0 14px rgba(255,230,0,.45)}
+.eg-hint{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;
+  color:rgba(255,230,0,.52);text-align:center;line-height:1.6;font-weight:600}
+.eg-items{display:flex;flex-direction:column;gap:2px}
+.ei{display:grid;grid-template-columns:30px 38px 1fr;gap:14px;align-items:center;
+  padding:16px 18px;background:var(--card);border:1px solid var(--b1);
+  border-left:3px solid transparent;opacity:.18;transition:opacity .5s,border-color .4s,background .4s}
+.ei.rev{opacity:.55}
+.ei.act{opacity:1;border-left-color:var(--ye);background:rgba(255,230,0,.04)}
+.ei-n{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.22);letter-spacing:1px}
+.ei-n.a{color:var(--ye)}
+.ei-ico{font-size:22px;text-align:center}
+.ei-label{font-size:14px;font-weight:600;color:rgba(255,255,255,.85);line-height:1.35}
+.ei-r{text-align:right}
+.ei-v{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--ye);letter-spacing:1px;line-height:1}
+.ei-u{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.28);letter-spacing:1px}
+.eg-wm{position:absolute;bottom:-24px;right:3%;font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(90px,15vw,180px);color:rgba(255,230,0,.025);line-height:1;
+  pointer-events:none;letter-spacing:-2px}
+
+/* ── 08 BODY ── */
+#body-sec{--sc:var(--rd);background:var(--bg)}
+.bl{display:grid;grid-template-columns:240px 1fr;gap:44px;align-items:start}
+.b-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:40px}
+.btab{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;
+  padding:14px 14px 12px;border:1px solid var(--b1);
+  background:rgba(255,255,255,.03);color:rgba(255,255,255,.5);
+  cursor:pointer;border-radius:4px;transition:all .22s;
+  text-align:left;display:flex;flex-direction:column;gap:6px;
+  position:relative;overflow:hidden;
+}
+.btab::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .22s;
+  background:linear-gradient(135deg,rgba(255,45,85,.12),rgba(255,45,85,.04))}
+.btab:hover{border-color:rgba(255,45,85,.5);color:rgba(255,255,255,.85);transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,45,85,.12)}
+.btab:hover::before{opacity:1}
+.btab.a{border-color:var(--rd);color:#fff;background:rgba(255,45,85,.12);box-shadow:0 0 0 1px var(--rd) inset}
+.btab.a::before{opacity:1}
+.btab-icon{font-size:20px;line-height:1}
+.btab-name{font-size:10px;letter-spacing:1px;font-weight:600;line-height:1.3}
+.btab-sub{font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.5px}
+.btab.a .btab-sub{color:rgba(255,45,85,.7)}
+.b-panel{background:var(--card);border:1px solid var(--b1);padding:24px;min-height:290px}
+.bp-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;
+  color:rgba(255,255,255,.22);margin-bottom:10px}
+.bp-t{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;
+  color:var(--rd);margin-bottom:12px}
+.bp-b{font-size:14px;color:rgba(255,255,255,.68);line-height:1.92;white-space:pre-line;margin-bottom:12px}
+.bp-d{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:10px 14px;
+  border-left:2px solid var(--rd);background:rgba(255,45,85,.05);
+  color:rgba(255,255,255,.7);line-height:1.65;display:none}
+
+/* ── 09 STATS ── */
+#stats{--sc:var(--gn);background:var(--sf)}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:28px}
+.sc-card{background:var(--card);padding:22px 18px}
+.sc-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);
+  letter-spacing:2px;line-height:1;margin-bottom:4px}
+.sc-u{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;
+  color:var(--mu);margin-bottom:6px}
+.sc-d{font-size:13px;color:rgba(255,255,255,.52);line-height:1.65}
+.hs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.hs{background:var(--card);border:1px solid var(--b1);padding:18px}
+.hs-r{font-family:'Bebas Neue',sans-serif;font-size:42px;color:rgba(255,255,255,.06);line-height:1;margin-bottom:4px}
+.hs-n{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;margin-bottom:2px}
+.hs-l{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--mu);margin-bottom:7px}
+.hs-d{font-size:12px;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* FOOTER */
+footer{padding:40px 7%;border-top:1px solid var(--b1);text-align:center}
+footer h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,5vw,54px);
+  letter-spacing:4px;color:var(--cy);margin-bottom:8px}
+footer p{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  section{padding:70px 5%}
+  .an-grid,.cu-grid,.rg,.bl{grid-template-columns:1fr;gap:28px}
+  .b-tabs{grid-template-columns:repeat(2,1fr)}
+  .s-inner{grid-template-columns:1fr;padding:0 5%;gap:16px}
+  .s-dots{position:static;flex-direction:row;transform:none;justify-content:center;margin-bottom:10px}
+  .ss{flex-direction:column;justify-content:flex-start;padding-top:16px;align-items:stretch}
+  .s-vis{order:-1;aspect-ratio:16/9;width:100%}
+  .s-inner{align-items:start}
+  .eg-main{grid-template-columns:1fr}
+  .eg-sl{flex-direction:row;align-items:center}
+  .eg-tw{min-height:auto;height:48px;flex:1}
+  .eg-tk{width:100%;height:2px;cursor:ew-resize}
+  .ld-desc{grid-template-columns:1fr}
+  .h-w,.h-l{font-size:clamp(58px,14vw,95px)}
+  .sc-n{font-size:clamp(24px,5vw,36px)}
+}
+</style>
+</head>
+<body style="background:#06060A;color:#F0EEF8">
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span class="nav-bolt">⚡</span>WHAT'S LIGHTNING</a>
+  <div class="lang-wrap">
+    <button class="lang-btn active" onclick="setLang('th')">TH</button>
+    <span class="lang-dot"></span>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+  <div class="nav-prog" id="nprog"></div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <canvas id="hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
+  <div class="hero-bolt">
+    <svg viewBox="0 0 400 700" fill="none" preserveAspectRatio="xMidYMid meet">
+      <path d="M275 0 L75 345 L195 345 L55 700 L380 248 L238 248 L378 0Z"
+        fill="rgba(0,229,255,.032)" stroke="rgba(0,229,255,.055)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-c">
+    <p class="hero-ey">LESSON 01 — ATMOSPHERIC PHYSICS</p>
+    <h1 class="hero-h">
+      <span class="h-w">WHAT'S</span>
+      <span class="h-l">LIGHTNING?</span>
+    </h1>
+    <p class="hero-sub th">สำรวจปรากฏการณ์ฟ้าผ่า — ต้นกำเนิด กลไก และวิทยาศาสตร์เบื้องหลังปรากฏการณ์ที่ยิ่งใหญ่ที่สุดของธรรมชาติ</p>
+    <p class="hero-sub en">Explore the phenomenon of lightning — its origins, mechanics, and the spectacular science behind nature's most powerful electrical event.</p>
+    <div class="hero-cta">
+      <div class="cta-row">
+        <div class="cta-line"></div>
+        <span class="cta-txt">BEGIN LEARNING</span>
+        <div class="cta-line"></div>
+      </div>
+      <div class="scroll-ind"><span class="scroll-txt">SCROLL</span><div class="scroll-ln"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 01 ANATOMY ══ -->
+<section id="anatomy">
+  <div class="rv"><div class="sl">01 · ANATOMY</div>
+    <h2 class="st">ANATOMY OF LIGHTNING</h2>
+    <div class="sa"></div></div>
+  <div class="an-grid">
+    <div class="rv d1">
+      <svg id="asvg" viewBox="0 0 360 510" style="width:100%;max-width:420px">
+        <defs><filter id="cyglow"><feGaussianBlur stdDeviation="3" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <!-- temp axis -->
+        <text x="30" y="68" fill="rgba(255,255,255,.22)" font-family="IBM Plex Mono" font-size="9" text-anchor="end">−40°C</text>
+        <line x1="33" y1="66" x2="44" y2="66" stroke="rgba(255,255,255,.09)" stroke-dasharray="2,2"/>
+        <text x="30" y="163" fill="rgba(255,255,255,.22)" font-family="IBM Plex Mono" font-size="9" text-anchor="end">−25°C</text>
+        <line x1="33" y1="161" x2="44" y2="161" stroke="rgba(255,255,255,.09)" stroke-dasharray="2,2"/>
+        <text x="30" y="242" fill="rgba(255,255,255,.22)" font-family="IBM Plex Mono" font-size="9" text-anchor="end">−15°C</text>
+        <line x1="33" y1="240" x2="44" y2="240" stroke="rgba(255,255,255,.09)" stroke-dasharray="2,2"/>
+        <text x="30" y="322" fill="rgba(255,255,255,.22)" font-family="IBM Plex Mono" font-size="9" text-anchor="end">0°C</text>
+        <line x1="33" y1="320" x2="44" y2="320" stroke="rgba(255,255,255,.09)" stroke-dasharray="2,2"/>
+        <!-- anvil -->
+        <ellipse cx="165" cy="58" rx="118" ry="30" fill="rgba(0,35,55,.75)" stroke="rgba(0,229,255,.1)" stroke-width="1"/>
+        <!-- cloud body -->
+        <rect x="46" y="58" width="238" height="250" rx="3" fill="rgba(8,18,32,.82)" stroke="rgba(0,229,255,.07)" stroke-width="1"/>
+        <!-- + zone top -->
+        <rect x="46" y="58" width="238" height="100" rx="3" fill="rgba(0,229,255,.05)" stroke="rgba(0,229,255,.14)" stroke-width="1"/>
+        <text x="85" y="98" fill="rgba(0,229,255,.5)" font-size="11">+</text>
+        <text x="132" y="90" fill="rgba(0,229,255,.4)" font-size="11">+</text>
+        <text x="178" y="104" fill="rgba(0,229,255,.5)" font-size="11">+</text>
+        <text x="228" y="93" fill="rgba(0,229,255,.35)" font-size="11">+</text>
+        <text x="264" y="106" fill="rgba(0,229,255,.3)" font-size="11">+</text>
+        <!-- − zone mid -->
+        <rect x="46" y="158" width="238" height="100" fill="rgba(55,10,18,.5)" stroke="rgba(255,45,85,.12)" stroke-width="1"/>
+        <text x="80" y="200" fill="rgba(255,45,85,.55)" font-size="14">−</text>
+        <text x="130" y="216" fill="rgba(255,45,85,.45)" font-size="14">−</text>
+        <text x="185" y="199" fill="rgba(255,45,85,.55)" font-size="14">−</text>
+        <text x="238" y="212" fill="rgba(255,45,85,.4)" font-size="14">−</text>
+        <text x="110" y="232" fill="rgba(255,45,85,.35)" font-size="14">−</text>
+        <!-- small + base -->
+        <rect x="46" y="258" width="238" height="50" fill="rgba(0,229,255,.025)" stroke="rgba(0,229,255,.07)" stroke-width="1"/>
+        <text x="130" y="288" fill="rgba(0,229,255,.32)" font-size="11">+</text>
+        <text x="185" y="280" fill="rgba(0,229,255,.28)" font-size="11">+</text>
+        <text x="238" y="290" fill="rgba(0,229,255,.22)" font-size="11">+</text>
+        <!-- channel dashed -->
+        <line x1="165" y1="308" x2="165" y2="400" stroke="rgba(0,229,255,.38)" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <circle cx="165" cy="406" r="4" fill="rgba(0,229,255,.58)" filter="url(#cyglow)"/>
+        <!-- ground -->
+        <line x1="40" y1="422" x2="294" y2="422" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+        <text x="165" y="440" text-anchor="middle" fill="rgba(255,255,255,.18)" font-family="IBM Plex Mono" font-size="9" letter-spacing="2">GROUND LEVEL</text>
+        <!-- callout: + zone -->
+        <line x1="284" y1="96" x2="300" y2="96" stroke="rgba(0,229,255,.28)" stroke-width="1"/>
+        <circle cx="284" cy="96" r="2" fill="rgba(0,229,255,.5)"/>
+        <text x="304" y="93" fill="rgba(255,255,255,.62)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุบวก (Anvil)</text>
+        <text x="304" y="106" fill="rgba(0,229,255,.38)" font-family="IBM Plex Mono" font-size="8" letter-spacing="1">POSITIVE CHARGE ZONE</text>
+        <!-- callout: − zone -->
+        <line x1="284" y1="206" x2="300" y2="206" stroke="rgba(255,45,85,.28)" stroke-width="1"/>
+        <circle cx="284" cy="206" r="2" fill="rgba(255,45,85,.5)"/>
+        <text x="304" y="203" fill="rgba(255,255,255,.62)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุลบหลัก</text>
+        <text x="304" y="216" fill="rgba(255,45,85,.38)" font-family="IBM Plex Mono" font-size="8" letter-spacing="1">PRIMARY NEGATIVE ZONE</text>
+        <!-- callout: small + -->
+        <line x1="284" y1="282" x2="300" y2="282" stroke="rgba(0,229,255,.2)" stroke-width="1"/>
+        <circle cx="284" cy="282" r="2" fill="rgba(0,229,255,.35)"/>
+        <text x="304" y="279" fill="rgba(255,255,255,.48)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุบวกเล็ก</text>
+        <text x="304" y="292" fill="rgba(0,229,255,.28)" font-family="IBM Plex Mono" font-size="8" letter-spacing="1">LOWER + POCKET</text>
+        <!-- callout: channel -->
+        <line x1="165" y1="355" x2="220" y2="355" stroke="rgba(0,229,255,.18)" stroke-width="1"/>
+        <text x="224" y="352" fill="rgba(255,255,255,.42)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">เส้นทางฟ้าผ่า</text>
+        <text x="224" y="365" fill="rgba(0,229,255,.28)" font-family="IBM Plex Mono" font-size="8" letter-spacing="1">LIGHTNING CHANNEL</text>
+      </svg>
+    </div>
+    <div class="facts">
+      <div class="fc rv d1"><div class="fc-val">TRIPOLAR</div>
+        <p class="fc-lbl">โครงสร้างสามขั้วประจุ</p>
+        <p class="fc-desc th">สนามไฟฟ้าสามชั้นในเมฆพายุ — ประจุบวก (+) ที่ยอดเมฆ ประจุลบ (−) ตรงกลาง และประจุบวกขนาดเล็กที่ฐานเมฆ สร้างเงื่อนไขที่จำเป็นทั้งหมดสำหรับการเกิดฟ้าผ่า</p>
+        <p class="fc-desc en">Three charge layers inside a storm: + at anvil, − in mid-tower, + at base. This tripolar structure creates the electrical conditions necessary for lightning.</p></div>
+      <div class="fc rv d2"><div class="fc-val">−15° TO −25°<span class="u">°C</span></div>
+        <p class="fc-lbl">โซนสร้างประจุหลัก</p>
+        <p class="fc-desc th">ช่วงอุณหภูมิที่ผลึกน้ำแข็งปะทะกับลูกเห็บอ่อน (Graupel) แล้วถ่ายเทอิเล็กตรอนระหว่างกัน ทำให้เกิดการแยกประจุไฟฟ้าที่ก่อให้เกิดฟ้าผ่า</p>
+        <p class="fc-desc en">Temperature range where graupel–ice crystal collisions transfer electrons, generating the charge separation that drives lightning formation.</p></div>
+      <div class="fc rv d3"><div class="fc-val">100<span class="u">kV/m</span></div>
+        <p class="fc-lbl">สนามไฟฟ้าก่อนฟ้าผ่า</p>
+        <p class="fc-desc th">ความเข้มสนามไฟฟ้าใกล้พื้นผิวโลกก่อนเกิด Return Stroke สูงถึง 100 กิโลโวลต์ต่อเมตร — มากกว่าสภาวะอากาศปกติถึง 1,000 เท่า</p>
+        <p class="fc-desc en">Electric field strength near ground before a return stroke — approximately 1,000× greater than fair-weather atmospheric field strength.</p></div>
+      <div class="fc rv d4"><div class="fc-val">50<span class="u">m/step</span></div>
+        <p class="fc-lbl">ระยะก้าวของลำประจุ</p>
+        <p class="fc-desc th">แต่ละก้าวของ Stepped Leader เคลื่อนที่ลงสู่พื้นดินครั้งละ ~50 เมตร แล้วหยุดพัก 50 ไมโครวินาทีก่อนก้าวต่อไป ทำให้การเคลื่อนที่เป็นช่วงๆ ไม่ต่อเนื่อง</p>
+        <p class="fc-desc en">Each stepped leader segment advances ~50 m, pausing 50 microseconds between steps — creating the distinctive non-continuous stepped propagation pattern.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 STEPS ══ -->
+<div class="sw" id="sw">
+  <div class="ss" id="ss">
+    <div class="s-wm" id="swm">01</div>
+    <div class="s-fig" id="sfig">FIG. 02 — CHARGE SEPARATION</div>
+    <div class="s-dots" id="sdots"></div>
+    <div class="s-inner">
+      <div class="s-left">
+        <div class="s-pr" id="spr">STEP 1 OF 7</div>
+        <div class="s-n" id="sn">01</div>
+        <div class="s-t" id="st2">CHARGE SEPARATION</div>
+        <div class="s-ul"></div>
+        <p class="s-bd th" id="sbth">loading...</p>
+        <p class="s-bd en" id="sben">loading...</p>
+        <div class="s-chips" id="schips"></div>
+      </div>
+      <div class="s-vis"><canvas id="sc"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 03 CUMULO ══ -->
+<section id="cumulo">
+  <div class="rv"><div class="sl">03 · CUMULONIMBUS</div>
+    <h2 class="st">INSIDE THE CLOUD</h2>
+    <div class="sa" style="background:var(--or)"></div></div>
+  <div class="cu-grid">
+    <canvas id="cc"></canvas>
+    <div class="cu-inf">
+      <div class="ci rv d1"><div class="ci-dot" style="background:var(--or)"></div>
+        <div><div class="ci-lbl">UPDRAFT</div>
+          <p class="ci-txt th">กระแสอากาศร้อนชื้นพุ่งขึ้นในแนวดิ่ง พาผลึกน้ำแข็งขนาดเล็กขึ้นสู่ส่วนบนของเมฆที่มีอุณหภูมิต่ำกว่า</p>
+          <p class="ci-txt en">Warm moist air rises rapidly, carrying small ice crystals into colder regions of the cloud.</p></div></div>
+      <div class="ci rv d2"><div class="ci-dot" style="background:var(--cy)"></div>
+        <div><div class="ci-lbl">DOWNDRAFT</div>
+          <p class="ci-txt th">ลูกเห็บอ่อน (Graupel) ที่หนักกว่าตกลงมาตามแรงโน้มถ่วง สวนทางกับ Updraft สร้างเงื่อนไขการปะทะ</p>
+          <p class="ci-txt en">Heavier graupel pellets fall under gravity, creating opposing flows that cause particle collisions.</p></div></div>
+      <div class="ci rv d3"><div class="ci-dot" style="background:var(--ye)"></div>
+        <div><div class="ci-lbl">COLLISION ZONE · −15°C TO −25°C</div>
+          <p class="ci-txt th">เมื่ออนุภาคปะทะกัน อิเล็กตรอนถ่ายเทจากผลึกน้ำแข็งไปสู่ลูกเห็บอ่อน สร้างการแยกประจุไฟฟ้าในเมฆ</p>
+          <p class="ci-txt en">Electron transfer during collisions creates charge separation — the critical process that leads to lightning.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 LEADER + STREAMER ══ -->
+<section id="leader">
+  <div class="ld-wrap">
+    <div class="rv"><div class="sl">04 · STEPPED LEADER & STREAMER</div>
+      <h2 class="st">THE HUNT</h2>
+      <div class="sa"></div>
+      <p class="sb th">ลำประจุลบเคลื่อนที่ลงเป็นก้าวๆ ค้นหาเส้นทางที่มีความต้านทานต่ำสุด ขณะเดียวกัน Streamer พุ่งขึ้นจากวัตถุบนพื้นดิน — เมื่อบรรจบกัน วงจรไฟฟ้าก็สมบูรณ์</p>
+      <p class="sb en">A negative plasma channel descends in 50-meter steps, hunting for the path of least resistance. Positive Streamers rise from tall ground objects. When they meet — the circuit closes.</p></div>
+    <div class="ld-cw">
+      <canvas id="lc"></canvas>
+      <div class="cv-hint">CLICK TO REPLAY</div>
+    </div>
+    <div class="ld-desc rv">
+      <div class="ld-box"><div class="ld-box-t">STEPPED LEADER</div>
+        <p class="ld-box-b th">เคลื่อนที่ลงเป็นก้าวๆ ครั้งละ ~50 เมตร หยุดพัก 50 ไมโครวินาที แตกกิ่งก้านหาเส้นทางที่ดีที่สุด</p>
+        <p class="ld-box-b en">Descends ~50 m per step, pausing 50 µs between steps, continuously branching.</p></div>
+      <div class="ld-box"><div class="ld-box-t">STREAMER</div>
+        <p class="ld-box-b th">ประจุบวกพุ่งขึ้นจากวัตถุสูงเด่น เมื่อเข้าใกล้กัน ~100 เมตร จะพุ่งเข้าหาลำประจุจากเมฆ</p>
+        <p class="ld-box-b en">Positive channels rise from tall objects. At ~100m gap, they surge toward the Stepped Leader.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 RETURN STROKE ══ -->
+<section id="return-sec">
+  <div class="rv"><div class="sl">05 · RETURN STROKE</div>
+    <h2 class="st" style="color:var(--rd)">THE REVERSAL</h2>
+    <div class="sa" style="background:var(--rd)"></div></div>
+  <div class="rg">
+    <div class="rv-vis rv" id="rvis" onclick="doReturn()">
+      <div class="r-ch"></div>
+      <div class="r-bar" id="rbar"></div>
+      <div class="r-glo" id="rglo"></div>
+      <div class="r-wh" id="rwh"></div>
+      <div class="r-ent">PLASMA CHANNEL</div>
+      <div class="r-lbl" id="rlbl">CLICK TO TRIGGER</div>
+    </div>
+    <div class="r-stats">
+      <div class="rst rv d1"><div class="rst-v">30,000°C</div>
+        <p class="rst-l"><span class="th">ร้อนกว่าผิวดวงอาทิตย์ 5 เท่า — อากาศขยายตัวเร็วกว่าความเร็วเสียง</span><span class="en">5× hotter than the sun's surface — air expands faster than sound</span></p></div>
+      <div class="rst rv d2"><div class="rst-v">⅓ – ½ C</div>
+        <p class="rst-l"><span class="th">ความเร็ว Return Stroke — พุ่งขึ้นจากพื้นสู่เมฆ ไม่ใช่ลงมา!</span><span class="en">Return Stroke speed — traveling UPWARD from ground to cloud, not down!</span></p></div>
+      <div class="rst rv d3"><div class="rst-v">30,000A</div>
+        <p class="rst-l"><span class="th">กระแสไฟฟ้าสูงสุด — 1,000 เท่าของฟิวส์บ้านทั่วไป</span><span class="en">Peak current — 1,000× a standard household fuse</span></p></div>
+      <div class="rst rv d4"><div class="rst-v">0.0002s</div>
+        <p class="rst-l"><span class="th">ระยะเวลาทั้งหมด — พลังงานมหาศาลในเสี้ยววินาที</span><span class="en">Total duration — massive energy released in a fraction of a second</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 FRACTAL ══ -->
+<section id="fractal-sec">
+  <div class="rv"><div class="sl">06 · FRACTAL & LAPLACIAN GROWTH</div>
+    <h2 class="st" style="color:var(--pu)">NATURE'S ALGORITHM</h2>
+    <div class="sa" style="background:var(--pu)"></div>
+    <p class="sb th">ฟ้าผ่าเลือกเส้นทางที่มีความต้านทานต่ำที่สุดเสมอ ทำให้เกิดรูปทรงแฟรกทัล มิติ 1.34–1.37 ที่มีความคล้ายคลึงกันในทุกระดับขนาด (Self-Similarity)</p>
+    <p class="sb en">Lightning always follows the path of least electrical resistance, creating fractal branching patterns with dimension 1.34–1.37 — self-similar at every scale.</p></div>
+  <canvas id="fc"></canvas>
+  <div class="fr-info">
+    <span class="fi"><b>FRACTAL DIMENSION</b> 1.34 – 1.37</span>
+    <span class="fi"><b>ALGORITHM</b> LAPLACIAN GROWTH</span>
+    <span class="fi"><b>PROPERTY</b> SELF-SIMILARITY</span>
+    <span class="fi" style="color:rgba(255,255,255,.18)"><span class="th">คลิกเพื่อ Generate ใหม่</span><span class="en">Click to generate new pattern</span></span>
+  </div>
+</section>
+
+<!-- ══ 07 ENERGY ══ -->
+<section id="energy">
+  <div class="rv"><div class="sl">07 · ENERGY COMPARISON</div>
+    <h2 class="st">LIGHTNING <span style="color:#fff">ENERGY</span></h2>
+    <div class="sa"></div>
+    <p class="sb th">ลากขึ้นเพื่อเปิดเผยว่าพลังงานฟ้าผ่า 1 ครั้งมหาศาลแค่ไหน</p>
+    <p class="sb en">Drag upward to reveal how the energy of one lightning bolt compares to everyday things.</p></div>
+  <div class="eg-main rv">
+    <div class="eg-sl">
+      <div class="eg-sl-top"><div class="eg-sl-num" id="ecurnum">01</div>
+        <div class="eg-sl-sub">OF 6 FACTS</div></div>
+      <div class="eg-tw">
+        <div class="eg-tk" id="etk">
+          <div class="eg-tf" id="etf" style="height:0%"></div>
+          <div class="eg-tick" style="bottom:0%">— 01</div>
+          <div class="eg-tick" style="bottom:20%">— 02</div>
+          <div class="eg-tick" style="bottom:40%">— 03</div>
+          <div class="eg-tick" style="bottom:60%">— 04</div>
+          <div class="eg-tick" style="bottom:80%">— 05</div>
+          <div class="eg-tick" style="bottom:100%">— 06</div>
+          <div class="eg-hnd" id="ehnd" style="bottom:0">
+            <svg width="10" height="10" viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" stroke="#000" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke="#000" stroke-width="1.5"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="eg-hint">DRAG UP<br>TO REVEAL</div>
+    </div>
+    <div class="eg-items" id="eitems"></div>
+    <div class="eg-wm" id="ewm">01</div>
+  </div>
+</section>
+
+<!-- ══ 08 BODY ══ -->
+<section id="body-sec">
+  <div class="rv"><div class="sl">08 · BODY IMPACT</div>
+    <h2 class="st" style="color:var(--rd)">BODY UNDER STRIKE</h2>
+    <div class="sa" style="background:var(--rd)"></div></div>
+  <div class="b-tabs" id="btabs"></div>
+  <div class="bl rv">
+    <div>
+      <svg id="bsvg" viewBox="0 0 200 440" style="width:100%;max-width:240px;margin:0 auto;display:block;cursor:pointer">
+        <defs>
+          <filter id="rdglow"><feGaussianBlur stdDeviation="4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="200" height="440" fill="#06060A"/>
+        <!-- Body silhouette — dark minimal + subtle white outline -->
+        <g fill="#16162A" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-linejoin="round">
+          <ellipse cx="100" cy="48" rx="31" ry="36"/>
+          <rect x="86" y="80" width="28" height="20" rx="4"/>
+          <path d="M58 96 Q44 93 35 97 L28 202 Q31 216 60 213 L60 96Z"/>
+          <path d="M142 96 Q156 93 165 97 L172 202 Q169 216 140 213 L140 96Z"/>
+          <rect x="58" y="95" width="84" height="132" rx="6"/>
+          <path d="M60 222 L55 368 Q57 380 80 378 L84 222Z"/>
+          <path d="M116 222 L121 368 Q123 380 142 378 L136 222Z"/>
+        </g>
+        <!-- Electric current path -->
+        <polyline points="100,8 98,55 103,110 97,170 102,224 100,318 100,376"
+          fill="none" stroke="rgba(255,45,85,.45)" stroke-width="2" stroke-dasharray="5,4"/>
+        <!-- Lichtenberg marks -->
+        <g stroke="rgba(255,120,60,.28)" stroke-width=".8" fill="none">
+          <path d="M76,105 Q62,130 79,155 Q65,180 82,202"/>
+          <path d="M124,107 Q138,132 120,157 Q134,182 118,204"/>
+        </g>
+        <!-- Entry point -->
+        <circle cx="100" cy="6" r="5" fill="rgba(255,255,255,.85)" filter="url(#rdglow)"/>
+        <text x="114" y="10" fill="rgba(255,255,255,.38)" font-size="7" font-family="IBM Plex Mono">ENTRY</text>
+        <!-- Exit points -->
+        <circle cx="68" cy="376" r="4" fill="rgba(255,45,85,.8)" filter="url(#rdglow)"/>
+        <circle cx="132" cy="376" r="4" fill="rgba(255,45,85,.8)" filter="url(#rdglow)"/>
+        <text x="100" y="396" text-anchor="middle" fill="rgba(255,45,85,.38)" font-size="7" font-family="IBM Plex Mono">EXIT</text>
+        <!-- Highlight zones -->
+        <ellipse id="hl-brain" cx="100" cy="44" rx="28" ry="33" fill="rgba(0,229,255,0)" stroke="rgba(0,229,255,0)" stroke-width="2" style="transition:all .3s"/>
+        <ellipse id="hl-heart" cx="87" cy="134" rx="19" ry="21" fill="rgba(255,45,85,0)" stroke="rgba(255,45,85,0)" stroke-width="2" style="transition:all .3s"/>
+        <rect id="hl-skin" x="30" y="105" width="27" height="95" rx="10" fill="rgba(255,92,0,0)" stroke="rgba(255,92,0,0)" stroke-width="2" style="transition:all .3s"/>
+        <g id="hl-burns" opacity="0" style="transition:opacity .3s">
+          <rect x="55" y="222" width="33" height="112" rx="7" fill="rgba(255,230,0,0)" stroke="rgba(255,230,0,.65)" stroke-width="2"/>
+          <rect x="112" y="222" width="33" height="112" rx="7" fill="rgba(255,230,0,0)" stroke="rgba(255,230,0,.65)" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+    <div class="b-panel" id="bpanel">
+      <div class="bp-lbl">SELECT A REGION</div>
+      <div class="bp-t" id="bpt">เลือกส่วนของร่างกาย</div>
+      <div class="bp-b th" id="bpbth">คลิกที่แท็บหรือส่วนต่างๆ ของร่างกายเพื่อดูผลกระทบจากฟ้าผ่า</div>
+      <div class="bp-b en" id="bpben">Click a tab or body region to see the specific effects of a lightning strike.</div>
+      <div class="bp-d" id="bpd"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 STATS ══ -->
+<section id="stats">
+  <div class="rv"><div class="sl">09 · STATISTICS</div>
+    <h2 class="st" style="color:var(--gn)">BY THE NUMBERS</h2>
+    <div class="sa" style="background:var(--gn)"></div></div>
+  <div class="sg rv" id="sgrid"></div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.2);margin-bottom:14px">GLOBAL HOTSPOTS</div>
+  <div class="hs-grid" id="hsgrid"></div>
+</section>
+
+<footer>
+  <h2>WHAT'S LIGHTNING?</h2>
+  <p>ATMOSPHERIC PHYSICS · INTERACTIVE LEARNING</p>
+  <p style="margin-top:8px;font-size:9px">Source: NOAA · NWS · Wikipedia · ResearchGate · กรมอุตุนิยมวิทยา</p>
+</footer>
+
+<script>
+/* ════════════════════════════════════════════
+   DATA
+════════════════════════════════════════════ */
+const STEPS=[
+  {n:'01',t:'CHARGE SEPARATION',fig:'CHARGE SEPARATION',
+   th:'ภายในเมฆคิวมูโลนิมบัส กระแสอากาศร้อนชื้น (Updraft) พาผลึกน้ำแข็งขึ้นสูง ขณะที่ลูกเห็บอ่อน (Graupel) ที่หนักกว่าตกลงมา เมื่อปะทะกันในโซน −15°C ถึง −25°C อิเล็กตรอนจะถ่ายเทระหว่างอนุภาค สร้างการแยกประจุไฟฟ้าในเมฆ',
+   en:'Inside a cumulonimbus cloud, warm updrafts carry ice crystals upward while heavier graupel falls. Collisions in the −15°C to −25°C zone transfer electrons between particles, creating charge separation across cloud layers.',
+   chips:['−15°C TO −25°C · Collision Zone','Updraft vs Downdraft · Charge Transfer'],
+   draw:'charges'},
+  {n:'02',t:'ELECTRIC FIELD',fig:'ELECTRIC FIELD DISTRIBUTION',
+   th:'สนามไฟฟ้าสะสมพลังงานในชั้นบรรยากาศ ขณะที่ประจุลบในเมฆสะสมมากขึ้น แรงผลักระหว่างประจุสร้างสนามไฟฟ้าที่มีความเข้มสูงจนถึงจุดพักที่อากาศไม่สามารถต้านทานได้อีกต่อไป',
+   en:'As charges separate, an intense electric field builds between the negative cloud base and the positively induced ground. The field reaches the critical breakdown threshold of ≥3 MV/m.',
+   chips:['ความเข้มสนาม <b>100 kV/m</b> · Near Ground','Breakdown Threshold <b>≥ 3 MV/m</b>'],
+   draw:'efield'},
+  {n:'03',t:'ELECTRON AVALANCHE',fig:'IONIZATION PROCESS',
+   th:'เมื่อสนามไฟฟ้าแรงพอ อิเล็กตรอนอิสระถูกเร่งจนชนกับโมเลกุลอากาศ ปลดปล่อยอิเล็กตรอนเพิ่มขึ้นเป็นทวีคูณ กลายเป็นปฏิกิริยาลูกโซ่ Electron Avalanche อากาศเปลี่ยนเป็น Plasma สถานะที่สี่ของสสาร',
+   en:'Free electrons accelerate in the intense field, colliding with air molecules to release more electrons exponentially — the Electron Avalanche. Air transforms from insulator to electrically conductive plasma.',
+   chips:['อากาศ: Gas → <b>Plasma</b> (สถานะที่ 4)','Electron Avalanche · Chain Reaction'],
+   draw:'avalanche'},
+  {n:'04',t:'STEPPED LEADER',fig:'STEPPED LEADER PROPAGATION',
+   th:'ลำประจุลบ (Stepped Leader) เริ่มเคลื่อนที่จากเมฆสู่พื้นดิน โดยเดินเป็นก้าวๆ ครั้งละ ~50 เมตร หยุดพัก 50 ไมโครวินาทีระหว่างก้าว แตกกิ่งก้านสาขาเพื่อค้นหาเส้นทางที่มีความต้านทานไฟฟ้าต่ำที่สุด',
+   en:'A negatively charged plasma channel extends from the cloud in discrete steps of ~50 meters each, pausing 50 microseconds between steps. It continuously branches, seeking the path of least electrical resistance.',
+   chips:['~50 m / step · 50 µs pause','Speed: ~200,000 m/s · Branching Path'],
+   draw:'leader'},
+  {n:'05',t:'STREAMER',fig:'STREAMER FORMATION',
+   th:'เมื่อ Stepped Leader เข้าใกล้พื้นดินในระยะ ~100 เมตร สนามไฟฟ้าที่ปลายลำประจุรุนแรงมากจนดึงประจุบวกจากวัตถุสูงเด่นบนพื้น เช่น ต้นไม้ ตึก หรือร่างกายมนุษย์ ให้พุ่งขึ้นเป็น Streamer',
+   en:'As the Stepped Leader approaches within ~100m, its intense electric field draws positive charges upward from tall objects — trees, buildings, even people — creating rising Streamers.',
+   chips:['ระยะห่าง ~100 m · Positive Channel Rising','วัตถุสูงเด่น = เสี่ยงกว่า · Tall objects = Higher risk'],
+   draw:'streamer'},
+  {n:'06',t:'CONNECTION',fig:'CIRCUIT COMPLETION',
+   th:'Stepped Leader จากฟ้าและ Streamer จากพื้นดินบรรจบกัน วงจรไฟฟ้าสมบูรณ์ ช่องทาง Plasma เชื่อมระหว่างเมฆกับพื้นดิน พร้อมสำหรับการคายประจุมหาศาลในเสี้ยววินาที',
+   en:'The descending Stepped Leader and rising Streamer make contact. The circuit is complete — a continuous plasma channel connects cloud to ground. Massive discharge is imminent.',
+   chips:['วงจรสมบูรณ์ · Plasma Channel Formed','ทุกอย่างเกิดขึ้นก่อนตาเห็นแสง · Before the visible flash'],
+   draw:'connection'},
+  {n:'07',t:'RETURN STROKE',fig:'RETURN STROKE DISCHARGE',
+   th:'ประจุบวกจากพื้นดินไหลกลับขึ้นตามช่องทาง Plasma ด้วยความเร็ว 1/3–1/2 ของความเร็วแสง คือสิ่งที่มนุษย์มองเห็นเป็นแสงวาบ! ช่องทางร้อนถึง 30,000°C อากาศขยายตัวเร็วกว่าเสียงจนเกิดฟ้าร้อง',
+   en:'Positive charge surges UPWARD through the plasma channel at 1/3–1/2 the speed of light — THIS is the flash we see! The channel reaches 30,000°C, causing supersonic air expansion that creates thunder.',
+   chips:['<b>30,000°C</b> · 5× ร้อนกว่าดวงอาทิตย์','<b>1/3–1/2 C</b> · ความเร็วแสง · ขึ้น ไม่ใช่ลง!'],
+   draw:'return'},
+];
+
+const ENERGY_ITEMS=[
+  {n:'01',ico:'🏠',
+   th:'ใช้ไฟฟ้าบ้านพักอาศัย 1 หลัง ได้ยาวนานถึง',
+   en:'Power a household continuously for',
+   val:'42',unit:'DAYS',bar:38},
+  {n:'02',ico:'🍞',
+   th:'ปิ้งขนมปังได้พร้อมกันมากถึง',
+   en:'Toast enough bread slices to feed thousands —',
+   val:'100K',unit:'SLICES',bar:58},
+  {n:'03',ico:'💡',
+   th:'จุดหลอดไฟ 100W พร้อมกันได้ในชั่วขณะนั้นถึง',
+   en:'Light 100-watt bulbs all at once, simultaneously —',
+   val:'12M',unit:'BULBS',bar:74},
+  {n:'04',ico:'🔌',
+   th:'ศักย์ไฟฟ้าสูงกว่าปลั๊กบ้าน 220V ของเราถึง',
+   en:'Electrical potential stronger than a 220V home outlet by',
+   val:'1.3M',unit:'× MORE',bar:100},
+  {n:'05',ico:'⚡',
+   th:'ฟ้าผ่าบวก (+) พบเพียง 5% แต่รุนแรงกว่าฟ้าผ่าลบถึง',
+   en:'Positive (+) lightning (only 5% of strikes) is more powerful by',
+   val:'10×',unit:'STRONGER',bar:90},
+  {n:'06',ico:'⏱',
+   th:'พลังงานทั้งหมดนั้นถูกปล่อยออกมาในเวลาเพียง',
+   en:'All that massive energy is released in just',
+   val:'0.0002',unit:'SECONDS',bar:5},
+];
+
+const BODY_ZONES=[
+  {id:'brain',lbl:'BRAIN',icon:'🧠',sub:'Nervous System',col:'#00E5FF',hl:'hl-brain',
+   t:'NERVOUS SYSTEM',
+   th:'กระแสไฟฟ้าผ่านระบบประสาทซึ่งมีความต้านทานต่ำ ทำให้เกิดอาการหมดสติ อัมพาตชั่วคราว (Keraunoparalysis) และความจำเสื่อมถอยหลัง (Retrograde Amnesia) ระบบประสาทได้รับผลกระทบรุนแรงที่สุดในบรรดาอวัยวะทั้งหมด',
+   en:'Current travels through the low-resistance nervous system, causing loss of consciousness, temporary paralysis (Keraunoparalysis), and retrograde amnesia. The nervous system is the most severely impacted organ system.',
+   d:'ความต้านทานไฟฟ้าต่ำมาก → ผลกระทบรุนแรงสุด\nLow resistance path: nerves → spine → brain'},
+  {id:'heart',lbl:'HEART',icon:'❤️',sub:'Cardiac Arrest',col:'#FF2D55',hl:'hl-heart',
+   t:'CARDIAC ARREST',
+   th:'ภาวะหัวใจหยุดเต้น (Asystole) เป็นสาเหตุการเสียชีวิตที่พบบ่อยที่สุด กระแสไฟฟ้ามหาศาลขัดขวางสัญญาณไฟฟ้าธรรมชาติของหัวใจ ต้องทำ CPR ทันทีเพื่อโอกาสรอดชีวิต',
+   en:'Asystole (cardiac arrest) is the most common cause of lightning fatality. Massive current overrides the heart\'s natural electrical signals. Immediate CPR is critical for survival.',
+   d:'Asystole = Primary cause of death\nImmediate CPR required · AED if available'},
+  {id:'skin',lbl:'SKIN',icon:'🌿',sub:'Lichtenberg Figures',col:'#FF5C00',hl:'hl-skin',
+   t:'LICHTENBERG FIGURES',
+   th:'รอยแผลเป็นรูปกิ่งก้านเฟิร์น (Lichtenberg Figures) บนผิวหนัง เกิดจากการที่กระแสไฟฟ้าทำให้เม็ดเลือดแดงรั่วออกจากหลอดเลือดฝอย ไม่ใช่รอยไหม้ถาวร ปรากฏภายใน 1 ชั่วโมง จางหายใน 24–48 ชั่วโมง',
+   en:'Fern-like branching skin marks form when current causes red blood cell leakage from capillaries (dielectric skin degradation). Not permanent burns — appear within 1 hour, fade in 24–48 hours.',
+   d:'ปรากฏใน ~1 ชั่วโมง · จางหายใน 24–48 ชั่วโมง\nNot a thermal burn — capillary rupture from current'},
+  {id:'burns',lbl:'BURNS',icon:'🔥',sub:'3 Types',col:'#FFE600',hl:'hl-burns',
+   t:'3 TYPES OF BURNS',
+   th:'1) Linear Burns — รอยไหม้เป็นเส้น จากการระเหยของเหงื่อบนผิวหนัง\n2) Punctate Burns — รอยจุดที่จุดเข้า-ออกของกระแสไฟฟ้า\n3) Thermal Burns — จากโลหะ เครื่องประดับ หรือซิปที่ร้อนจัดจนละลาย',
+   en:'1) Linear Burns — parallel streaks from rapid sweat evaporation\n2) Punctate Burns — small circular wounds at entry/exit points\n3) Thermal Burns — from metal jewelry, belt buckles, or zippers superheated by current',
+   d:'โลหะที่สวมใส่เสี่ยงเกิด Thermal Burns\nMetal accessories are high thermal burn risk'},
+];
+
+const STATS=[
+  {n:'40–100',u:'/second',th:'ฟ้าผ่าเกิดขึ้นทั่วโลกทุกวินาที',en:'Lightning strikes worldwide every second',c:'#00FF88'},
+  {n:'300M',u:'volts',th:'ศักย์ไฟฟ้าของฟ้าผ่าทั่วไป',en:'Electrical potential of typical lightning',c:'#FFE600'},
+  {n:'30,000',u:'amperes',th:'กระแสไฟฟ้าสูงสุดใน Return Stroke',en:'Peak current in a Return Stroke',c:'#00E5FF'},
+  {n:'30,000°C',u:'temperature',th:'ร้อนกว่าผิวดวงอาทิตย์ 5 เท่า',en:'5× hotter than the sun\'s surface',c:'#FF5C00'},
+  {n:'10,000',u:'tonnes/day',th:'ไนเตรตที่ฟ้าผ่าสร้างให้โลกต่อวัน',en:'Nitrates produced globally per day by lightning',c:'#00FF88'},
+  {n:'5%',u:'of strikes',th:'ฟ้าผ่าบวก (+) อันตรายกว่า 10 เท่า',en:'Positive (+) lightning — 10× more powerful',c:'#FF5C00'},
+];
+
+const HOTSPOTS=[
+  {r:'01',n:'LAKE MARACAIBO',l:'Venezuela',th:'จุดฟ้าผ่าหนาแน่นที่สุดในโลก เกิดพายุเกือบทุกคืนตลอดปี',en:'World\'s most lightning-active location, thunderstorms almost every night year-round',c:'#FFE600'},
+  {r:'02',n:'BOGOR',l:'Indonesia',th:'"เมืองหลวงฟ้าผ่าโลก" 322 วันต่อปีที่มีพายุฝนฟ้าคะนอง',en:'"Lightning capital of the world" — 322 thunderstorm days per year',c:'#FF5C00'},
+  {r:'03',n:'CONGO BASIN',l:'Africa',th:'ความหนาแน่นฟ้าผ่าสูงที่สุดในเชิงพื้นที่ของโลก',en:'Highest lightning flash density per area on Earth',c:'#00E5FF'},
+  {r:'TH',n:'THAILAND',l:'ประเทศไทย',th:'เม.ย.–พ.ค. และ ก.ย.–ต.ค. ช่วง 15:00–17:00 น. อันตรายสูงสุด กลางทุ่งนาและใต้ต้นไม้ใหญ่',en:'Peak risk: April–May and September–October, 15:00–17:00 daily. Fields and tall trees = highest risk.',c:'#00FF88'},
+];
+
+/* ════════════════════════════════════════════
+   UTILS
+════════════════════════════════════════════ */
+const $=id=>document.getElementById(id);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let lang='th';
+
+/* ════════════════════════════════════════════
+   LANGUAGE
+════════════════════════════════════════════ */
+function setLang(l){
+  lang=l;
+  document.documentElement.className=l;
+  document.querySelectorAll('.lang-btn').forEach((b,i)=>b.classList.toggle('active',i===(l==='th'?0:1)));
+}
+
+/* ════════════════════════════════════════════
+   NAV PROGRESS
+════════════════════════════════════════════ */
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  $('nprog').style.width=(window.scrollY/h*100)+'%';
+},{passive:true});
+
+/* ════════════════════════════════════════════
+   REVEAL
+════════════════════════════════════════════ */
+const rvObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* ════════════════════════════════════════════
+   HERO CANVAS LIGHTNING
+════════════════════════════════════════════ */
+(()=>{
+  const cv=$('hero-canvas'),ctx=cv.getContext('2d');
+  let bolts=[],last=0;
+  const resize=()=>{cv.width=window.innerWidth;cv.height=window.innerHeight};
+  resize();window.addEventListener('resize',resize);
+  function mkB(x1,y1,x2,y2,r,d){
+    if(d<=0||(Math.abs(x2-x1)+Math.abs(y2-y1))<6)return[[x1,y1],[x2,y2]];
+    const mx=(x1+x2)/2+(Math.random()-.5)*r,my=(y1+y2)/2+(Math.random()-.5)*r*.2;
+    return[...mkB(x1,y1,mx,my,r*.5,d-1),...mkB(mx,my,x2,y2,r*.5,d-1)];
+  }
+  function frame(ts){
+    ctx.fillStyle='rgba(6,6,10,.18)';ctx.fillRect(0,0,cv.width,cv.height);
+    if(ts-last>1800+Math.random()*2600){
+      const x=cv.width*.15+Math.random()*cv.width*.7;
+      bolts.push({pts:mkB(x,0,x+(Math.random()-.5)*200,cv.height*.68,140,7),a:1});
+      if(Math.random()>.55){const x2=cv.width*.15+Math.random()*cv.width*.7;bolts.push({pts:mkB(x2,0,x2+(Math.random()-.5)*150,cv.height*.55,100,6),a:.75});}
+      last=ts;
+    }
+    bolts=bolts.filter(b=>b.a>.02);
+    bolts.forEach(b=>{
+      b.a-=.032;
+      [[`rgba(255,255,255,${b.a})`,b.a>.55?1.5:1,6],['rgba(0,229,255,'+b.a*.7+')',b.a>.55?2.5:1.5,16]].forEach(([c,lw,blur])=>{
+        ctx.save();ctx.globalAlpha=1;ctx.strokeStyle=c;ctx.lineWidth=lw;ctx.shadowColor=c;ctx.shadowBlur=blur;
+        ctx.beginPath();b.pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();ctx.restore();
+      });
+    });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  window.addEventListener('scroll',()=>{
+    const el=document.querySelector('.hero-c');
+    const y=window.scrollY,H=window.innerHeight;
+    if(y<H){el.style.transform=`translateY(${y*.28}px)`;el.style.opacity=Math.max(0,1-y/H*1.4);}
+  },{passive:true});
+})();
+
+/* ════════════════════════════════════════════
+   STEPS STICKY SCROLL
+════════════════════════════════════════════ */
+(()=>{
+  // build dots
+  const dotsEl=$('sdots');
+  STEPS.forEach((_,i)=>{
+    const d=document.createElement('div');d.className='sd'+(i===0?' a':'');
+    d.onclick=()=>{const w=$('sw');window.scrollTo({top:w.offsetTop+(w.clientHeight-window.innerHeight)/6*i,behavior:'smooth'});};
+    dotsEl.appendChild(d);
+  });
+
+  // canvas step draw functions
+  const C={cy:'#00E5FF',ye:'#FFE600',or:'#FF5C00',rd:'#FF2D55',pu:'#BF5FFF',mu:'rgba(255,255,255,.6)'};
+  function drawStep(idx){
+    const cv=$('sc'),p=cv.parentElement;
+    cv.width=p.offsetWidth;cv.height=p.offsetHeight||280;
+    const ctx=cv.getContext('2d'),W=cv.width,H=cv.height,s=STEPS[idx];
+    ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);
+    const D={
+      charges(){
+        // updraft particles
+        for(let i=0;i<22;i++){const x=W*.15+Math.random()*W*.25,y=Math.random()*H;ctx.beginPath();ctx.arc(x,y,2+Math.random()*2,0,Math.PI*2);ctx.fillStyle=`rgba(255,${100+Math.floor(Math.random()*90)},0,${.4+Math.random()*.4})`;ctx.fill();}
+        // downdraft
+        for(let i=0;i<22;i++){const x=W*.6+Math.random()*W*.25,y=Math.random()*H;ctx.beginPath();ctx.arc(x,y,2+Math.random()*2,0,Math.PI*2);ctx.fillStyle=`rgba(0,229,255,${.4+Math.random()*.4})`;ctx.fill();}
+        // arrows
+        [[W*.25,'rgba(255,92,0,.5)',true],[W*.75,'rgba(0,229,255,.5)',false]].forEach(([x,c,up])=>{
+          ctx.strokeStyle=c;ctx.lineWidth=1.5;
+          for(let y=up?H*.85:H*.1;up?y>H*.1:y<H*.85;y+=up?-H*.12:H*.12){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,up?y-H*.08:y+H*.08);ctx.stroke();}
+        });
+        ctx.fillStyle='rgba(255,230,0,.55)';ctx.font='bold 11px IBM Plex Mono';ctx.textAlign='center';ctx.fillText('COLLISION ZONE',W/2,H/2);
+        ctx.fillStyle='rgba(255,230,0,.35)';ctx.font='9px IBM Plex Mono';ctx.fillText('−15°C to −25°C',W/2,H/2+16);
+      },
+      efield(){
+        // cloud base
+        ctx.beginPath();ctx.ellipse(W/2,H*.18,W*.38,H*.1,0,0,Math.PI*2);ctx.fillStyle='rgba(10,20,35,.8)';ctx.fill();ctx.strokeStyle='rgba(255,230,0,.2)';ctx.lineWidth=1;ctx.stroke();
+        // − symbols
+        for(let i=0;i<5;i++){ctx.fillStyle='rgba(255,45,85,.55)';ctx.font='14px sans-serif';ctx.textAlign='center';ctx.fillText('−',W*.18+i*(W*.64/4),H*.22);}
+        // field lines
+        for(let i=0;i<7;i++){
+          const x=W*.12+i*(W*.76/6);
+          ctx.beginPath();ctx.moveTo(x,H*.28);ctx.bezierCurveTo(x+(Math.random()-.5)*20,H*.55,x+(Math.random()-.5)*20,H*.72,x+(Math.random()-.5)*10,H*.85);
+          ctx.strokeStyle='rgba(255,230,0,.65)';ctx.lineWidth=1.5;ctx.shadowColor='rgba(255,230,0,.5)';ctx.shadowBlur=6;ctx.stroke();ctx.shadowBlur=0;
+          // arrowhead
+          ctx.fillStyle='rgba(255,230,0,.6)';ctx.font='12px sans-serif';ctx.textAlign='center';ctx.fillText('▼',x+(Math.random()-.5)*5,H*.88);
+        }
+        // ground with + symbols
+        ctx.strokeStyle='rgba(255,255,255,.15)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(20,H*.9);ctx.lineTo(W-20,H*.9);ctx.stroke();
+        for(let i=0;i<5;i++){ctx.fillStyle='rgba(0,229,255,.4)';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.fillText('+',W*.15+i*(W*.7/4),H*.88);}
+        ctx.fillStyle='rgba(255,255,255,.22)';ctx.font='8px IBM Plex Mono';ctx.textAlign='center';ctx.fillText('INDUCED GROUND CHARGE',W/2,H*.97);
+        ctx.fillStyle='rgba(255,230,0,.55)';ctx.font='9px IBM Plex Mono';ctx.textAlign='right';ctx.fillText('E-FIELD ↓',W-14,H*.55);
+      },
+      avalanche(){
+        const cx=W/2,cy=H/2;
+        for(let g=0;g<5;g++){const n=Math.min(14,Math.pow(2,g));
+          for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,r=15+g*20;
+            const px=cx+Math.cos(a)*r,py=cy+Math.sin(a)*r;
+            ctx.beginPath();ctx.arc(px,py,2.5,0,Math.PI*2);ctx.fillStyle=`rgba(0,229,255,${.9-g*.14})`;ctx.fill();
+            ctx.strokeStyle=`rgba(0,229,255,${.15-g*.02})`;ctx.lineWidth=.6;
+            ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(px,py);ctx.stroke();
+          }
+        }
+        ctx.fillStyle='rgba(0,229,255,.7)';ctx.font='bold 11px IBM Plex Mono';ctx.textAlign='center';ctx.fillText('ELECTRON AVALANCHE',W/2,H-16);
+        ctx.beginPath();ctx.arc(cx,cy,8,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.9)';ctx.shadowColor='#fff';ctx.shadowBlur=12;ctx.fill();ctx.shadowBlur=0;
+      },
+      leader(){
+        let x=W/2,y=12;ctx.beginPath();ctx.moveTo(x,y);
+        ctx.shadowColor=C.cy;ctx.shadowBlur=8;
+        while(y<H*.72){x+=(Math.random()-.5)*46;x=Math.max(40,Math.min(W-40,x));y+=22+Math.random()*18;
+          ctx.lineTo(x,y);ctx.strokeStyle='rgba(0,229,255,.85)';ctx.lineWidth=2;ctx.stroke();
+          ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle='rgba(0,229,255,.22)';ctx.fill();
+          ctx.beginPath();ctx.moveTo(x,y);
+        }
+        ctx.shadowBlur=0;
+        ctx.fillStyle='rgba(0,229,255,.6)';ctx.font='9px IBM Plex Mono';ctx.textAlign='left';ctx.fillText('~50m per step',x+8,y);
+        ctx.fillStyle='rgba(255,255,255,.2)';ctx.font='8px IBM Plex Mono';ctx.textAlign='center';ctx.fillText('CLOUD (−)',W/2,20);
+      },
+      streamer(){
+        // leader partial
+        let lx=W*.45,ly=12;ctx.beginPath();ctx.moveTo(lx,ly);
+        for(let i=0;i<8;i++){lx+=(Math.random()-.5)*36;ly+=H*.065;ctx.lineTo(lx,ly);}
+        ctx.strokeStyle='rgba(0,229,255,.82)';ctx.lineWidth=2;ctx.shadowColor=C.cy;ctx.shadowBlur=6;ctx.stroke();ctx.shadowBlur=0;
+        // streamer up
+        let sx=W*.55,sy=H-12;ctx.beginPath();ctx.moveTo(sx,sy);
+        for(let i=0;i<6;i++){sx+=(Math.random()-.5)*24;sy-=H*.065;ctx.lineTo(sx,sy);}
+        ctx.strokeStyle='rgba(255,230,0,.85)';ctx.lineWidth=2;ctx.shadowColor=C.ye;ctx.shadowBlur=6;ctx.stroke();ctx.shadowBlur=0;
+        ctx.fillStyle='rgba(255,255,255,.38)';ctx.font='10px IBM Plex Mono';ctx.textAlign='center';ctx.fillText('↕ ~100m GAP',W/2,H/2);
+        ctx.fillStyle='rgba(0,229,255,.6)';ctx.font='8px IBM Plex Mono';ctx.textAlign='left';ctx.fillText('LEADER',lx+6,ly+12);
+        ctx.fillStyle='rgba(255,230,0,.6)';ctx.textAlign='right';ctx.fillText('STREAMER',sx-6,sy-10);
+      },
+      connection(){
+        const pts=[];let cx=W/2,cy=12;
+        ctx.beginPath();ctx.moveTo(cx,cy);
+        while(cy<H-12){cx+=(Math.random()-.5)*30;cy+=H*.065;pts.push([cx,cy]);ctx.lineTo(cx,cy);}
+        ctx.strokeStyle=C.cy;ctx.lineWidth=2.5;ctx.shadowColor=C.cy;ctx.shadowBlur=14;ctx.stroke();ctx.shadowBlur=0;
+        const jp=pts[Math.floor(pts.length/2)];
+        ctx.beginPath();ctx.arc(jp[0],jp[1],14,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.65)';ctx.shadowColor='#fff';ctx.shadowBlur=20;ctx.fill();ctx.shadowBlur=0;
+        ctx.fillStyle='rgba(255,255,255,.9)';ctx.font='bold 11px IBM Plex Mono';ctx.textAlign='center';ctx.fillText('CIRCUIT COMPLETE',W/2,H-16);
+      },
+      return(){
+        const g=ctx.createLinearGradient(0,H,0,0);
+        g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.5,'rgba(0,229,255,.9)');g.addColorStop(1,'rgba(255,92,0,.4)');
+        let rx=W/2,ry=H-5;ctx.beginPath();ctx.moveTo(rx,ry);
+        while(ry>5){rx+=(Math.random()-.5)*22;ry-=16;ctx.lineTo(rx,ry);}
+        ctx.strokeStyle=g;ctx.lineWidth=4;ctx.shadowColor='#fff';ctx.shadowBlur=28;ctx.stroke();ctx.shadowBlur=0;
+        ctx.fillStyle='rgba(255,255,255,.06)';ctx.fillRect(0,0,W,H);
+        ctx.fillStyle=C.ye;ctx.font='bold 16px IBM Plex Mono';ctx.textAlign='center';ctx.fillText('30,000°C',W/2,28);
+        ctx.fillStyle='rgba(255,255,255,.7)';ctx.font='10px IBM Plex Mono';ctx.fillText('↑ RETURN STROKE (UPWARD)',W/2,H-16);
+      },
+    };
+    if(D[s.draw])D[s.draw]();
+  }
+
+  let cur=-1;
+  function showStep(i){
+    if(i===cur)return;cur=i;const s=STEPS[i];
+    $('swm').textContent=s.n;$('sfig').textContent='FIG. 0'+(i+2)+' — '+s.t;
+    $('spr').textContent=`STEP ${i+1} OF 7`;
+    $('sn').textContent=s.n;$('st2').textContent=s.t;
+    $('sbth').textContent=s.th;$('sben').textContent=s.en;
+    $('schips').innerHTML=s.chips.map(c=>`<div class="s-chip">${c}</div>`).join('');
+    document.querySelectorAll('.sd').forEach((d,j)=>d.classList.toggle('a',j===i));
+    drawStep(i);
+  }
+
+  window.addEventListener('scroll',()=>{
+    const w=$('sw'),rect=w.getBoundingClientRect();
+    const total=w.clientHeight-window.innerHeight;
+    const progress=Math.max(0,Math.min(1,-rect.top/total));
+    showStep(Math.min(6,Math.floor(progress*7)));
+  },{passive:true});
+  showStep(0);
+  window.addEventListener('resize',()=>drawStep(cur));
+})();
+
+/* ════════════════════════════════════════════
+   CUMULONIMBUS CANVAS
+════════════════════════════════════════════ */
+(()=>{
+  const cv=$('cc'),ctx=cv.getContext('2d');
+  let pts=[],running=false;
+  const resize=()=>{cv.width=cv.offsetWidth;cv.height=cv.offsetHeight||360};
+  resize();
+  function init(){
+    pts=[];const W=cv.width,H=cv.height;
+    for(let i=0;i<48;i++)pts.push({x:W*.15+Math.random()*W*.24,y:H*.5+Math.random()*H*.4,vx:(Math.random()-.5)*.4,vy:-1-Math.random()*1.8,r:2+Math.random()*3,c:`rgba(255,${100+Math.floor(Math.random()*90)},0,`,a:.5+Math.random()*.4,t:'u'});
+    for(let i=0;i<48;i++)pts.push({x:W*.61+Math.random()*W*.24,y:H*.05+Math.random()*H*.35,vx:(Math.random()-.5)*.4,vy:1+Math.random()*1.8,r:2+Math.random()*3,c:'rgba(0,229,255,',a:.5+Math.random()*.4,t:'d'});
+  }
+  function frame(){
+    const W=cv.width,H=cv.height;
+    ctx.fillStyle='rgba(0,0,0,.25)';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='rgba(255,230,0,.03)';ctx.fillRect(0,0,W,H*.28);
+    ctx.fillStyle='rgba(0,229,255,.03)';ctx.fillRect(0,H*.32,W,H*.38);
+    ctx.font='8px IBM Plex Mono';ctx.textAlign='left';
+    ctx.fillStyle='rgba(255,230,0,.4)';ctx.fillText('POSITIVE (+)',8,18);
+    ctx.fillStyle='rgba(0,229,255,.4)';ctx.fillText('NEGATIVE (−)',8,H*.55);
+    ctx.fillStyle='rgba(255,255,255,.2)';ctx.textAlign='center';ctx.fillText('COLLISION ZONE · −15°C TO −25°C',W/2,H*.33);
+    pts.forEach(p=>{
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c+p.a+')';ctx.fill();
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.t==='u'&&p.y<-10){p.y=H*.9;p.x=W*.15+Math.random()*W*.24;}
+      if(p.t==='d'&&p.y>H+10){p.y=H*.05;p.x=W*.61+Math.random()*W*.24;}
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+    });
+    if(Math.random()<.04){const sx=W*.28+Math.random()*W*.44,sy=H*.28+Math.random()*H*.2;ctx.beginPath();ctx.arc(sx,sy,1.5+Math.random()*2,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.88)';ctx.fill();}
+    if(running)requestAnimationFrame(frame);
+  }
+  const obs=new IntersectionObserver(e=>{if(e[0].isIntersecting&&!running){running=true;init();frame();}else if(!e[0].isIntersecting){running=false;}},{threshold:.15});
+  obs.observe(cv);
+})();
+
+/* ════════════════════════════════════════════
+   STEPPED LEADER CANVAS ANIMATION
+════════════════════════════════════════════ */
+(()=>{
+  const cv=$('lc'),ctx=cv.getContext('2d');
+  let busy=false;
+  const resize=()=>{cv.width=cv.offsetWidth;cv.height=440};
+  resize();
+  function mkPath(sx,sy,ey){
+    const pts=[{x:sx,y:sy}];let x=sx,y=sy;
+    while(y<ey){x+=(Math.random()-.5)*58;x=Math.max(44,Math.min(cv.width-44,x));y+=26+Math.random()*22;pts.push({x,y});}
+    return pts;
+  }
+  async function animate(){
+    if(busy)return;busy=true;
+    try{const W=cv.width,H=cv.height;
+    ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='rgba(255,255,255,.18)';ctx.font='9px IBM Plex Mono';ctx.textAlign='center';
+    ctx.fillText('CLOUD (−)',W/2,20);ctx.fillText('GROUND (+)',W/2,H-12);
+
+    const lPath=mkPath(W*.46,24,H*.54),sPath=mkPath(W*.54+20,H-24,H*.46).reverse();
+
+    // ── PHASE 1: STEPPED LEADER (blue, top → down) ──
+    for(let i=1;i<lPath.length;i++){
+      await sleep(70);
+      ctx.fillStyle='rgba(0,0,0,.3)';ctx.fillRect(0,0,W,H);
+      ctx.fillStyle='rgba(255,255,255,.18)';ctx.font='9px IBM Plex Mono';ctx.textAlign='center';
+      ctx.fillText('CLOUD (−)',W/2,20);ctx.fillText('GROUND (+)',W/2,H-12);
+      // draw full leader so far
+      ctx.beginPath();ctx.moveTo(lPath[0].x,lPath[0].y);
+      for(let j=1;j<=i;j++)ctx.lineTo(lPath[j].x,lPath[j].y);
+      ctx.strokeStyle='rgba(0,229,255,.9)';ctx.lineWidth=2;ctx.shadowColor='#00E5FF';ctx.shadowBlur=12;ctx.stroke();ctx.shadowBlur=0;
+      // glowing tip
+      ctx.beginPath();ctx.arc(lPath[i].x,lPath[i].y,6,0,Math.PI*2);
+      ctx.fillStyle='rgba(0,229,255,.35)';ctx.fill();
+      ctx.beginPath();ctx.arc(lPath[i].x,lPath[i].y,2,0,Math.PI*2);
+      ctx.fillStyle='#00E5FF';ctx.shadowColor='#00E5FF';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;
+      // STEPPED LEADER label
+      ctx.fillStyle='rgba(0,229,255,.55)';ctx.font='8px IBM Plex Mono';ctx.textAlign='left';
+      ctx.fillText(`STEPPED LEADER · STEP ${i}`,lPath[i].x+10,lPath[i].y+4);
+    }
+
+    // ── PHASE 2: STREAMER (yellow, bottom → up) — prominent ──
+    await sleep(250);
+    for(let i=1;i<sPath.length;i++){
+      await sleep(50);
+      // keep leader
+      ctx.beginPath();ctx.moveTo(lPath[0].x,lPath[0].y);
+      for(let j=1;j<lPath.length;j++)ctx.lineTo(lPath[j].x,lPath[j].y);
+      ctx.strokeStyle='rgba(0,229,255,.6)';ctx.lineWidth=1.5;ctx.stroke();
+      // streamer glow pass (thick, bright)
+      ctx.beginPath();ctx.moveTo(sPath[0].x,sPath[0].y);
+      for(let j=1;j<=i;j++)ctx.lineTo(sPath[j].x,sPath[j].y);
+      ctx.strokeStyle='rgba(255,230,0,.95)';ctx.lineWidth=3;
+      ctx.shadowColor='#FFE600';ctx.shadowBlur=18;ctx.stroke();ctx.shadowBlur=0;
+      // streamer core (white-yellow)
+      ctx.beginPath();ctx.moveTo(sPath[0].x,sPath[0].y);
+      for(let j=1;j<=i;j++)ctx.lineTo(sPath[j].x,sPath[j].y);
+      ctx.strokeStyle='rgba(255,255,180,.9)';ctx.lineWidth=1;ctx.stroke();
+      // glowing tip (rises upward)
+      ctx.beginPath();ctx.arc(sPath[i].x,sPath[i].y,8,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,230,0,.25)';ctx.fill();
+      ctx.beginPath();ctx.arc(sPath[i].x,sPath[i].y,3,0,Math.PI*2);
+      ctx.fillStyle='#FFE600';ctx.shadowColor='#FFE600';ctx.shadowBlur=14;ctx.fill();ctx.shadowBlur=0;
+      // STREAMER label
+      ctx.fillStyle='rgba(255,230,0,.7)';ctx.font='bold 9px IBM Plex Mono';ctx.textAlign='right';
+      ctx.fillText(`STREAMER ↑`,sPath[i].x-10,sPath[i].y-6);
+    }
+
+    // ── PHASE 3: CONNECTION — dramatic flash ──
+    await sleep(180);
+    // Burst at junction point (leader tip meets streamer tip)
+    const jx=(lPath[lPath.length-1].x+sPath[sPath.length-1].x)/2;
+    const jy=(lPath[lPath.length-1].y+sPath[sPath.length-1].y)/2;
+    // radial burst
+    for(let r=30;r>0;r-=5){
+      ctx.beginPath();ctx.arc(jx,jy,r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${0.04})`;ctx.fill();
+    }
+    // white flash x4
+    for(let f=0;f<4;f++){
+      ctx.fillStyle=`rgba(255,255,255,${.7-f*.15})`;ctx.fillRect(0,0,W,H);
+      await sleep(60);ctx.fillStyle='rgba(0,0,0,.55)';ctx.fillRect(0,0,W,H);await sleep(40);
+    }
+
+    // ── PHASE 4: COMPLETE BOLT (brilliant white) ──
+    ctx.fillStyle='rgba(0,0,0,.85)';ctx.fillRect(0,0,W,H);
+    const all=[...lPath,...sPath.slice(1)];
+    // outer glow
+    ctx.beginPath();ctx.moveTo(all[0].x,all[0].y);all.forEach(p=>ctx.lineTo(p.x,p.y));
+    ctx.strokeStyle='rgba(0,229,255,.4)';ctx.lineWidth=8;ctx.shadowColor='#00E5FF';ctx.shadowBlur=30;ctx.stroke();ctx.shadowBlur=0;
+    // main bolt
+    ctx.beginPath();ctx.moveTo(all[0].x,all[0].y);all.forEach(p=>ctx.lineTo(p.x,p.y));
+    ctx.strokeStyle='#fff';ctx.lineWidth=2.5;ctx.shadowColor='#fff';ctx.shadowBlur=20;ctx.stroke();ctx.shadowBlur=0;
+    // label
+    ctx.fillStyle='rgba(255,255,255,.92)';ctx.font='bold 11px IBM Plex Mono';ctx.textAlign='center';
+    ctx.fillText('⚡ CIRCUIT COMPLETE — DISCHARGE IMMINENT',W/2,H/2);
+    // sub-labels — safe array access
+    if(lPath.length>3){ctx.fillStyle='rgba(0,229,255,.6)';ctx.font='9px IBM Plex Mono';ctx.textAlign='left';ctx.fillText('STEPPED LEADER (−)',lPath[3].x+8,lPath[3].y);}
+    if(sPath.length>2){ctx.fillStyle='rgba(255,230,0,.7)';ctx.textAlign='right';ctx.fillText('STREAMER (+)',sPath[2].x-8,sPath[2].y);}
+    }finally{busy=false;}
+  }
+  cv.onclick=animate;
+  const obs=new IntersectionObserver(e=>{if(e[0].isIntersecting){animate();obs.disconnect();}},{threshold:.3});
+  obs.observe(cv);
+})();
+
+/* ════════════════════════════════════════════
+   RETURN STROKE
+════════════════════════════════════════════ */
+let retPlayed=false;
+function doReturn(){
+  const bar=$('rbar'),glo=$('rglo'),wh=$('rwh'),lbl=$('rlbl');
+  bar.style.transition='none';bar.style.height='0';glo.style.opacity='0';glo.style.animation='none';wh.style.opacity='0';wh.style.animation='none';
+  void bar.offsetWidth;
+  lbl.textContent='30,000°C · 1/3 ความเร็วแสง';lbl.style.color='#FF5C00';
+  setTimeout(()=>{
+    bar.style.transition='height .12s ease-out';bar.style.height='100%';
+    setTimeout(()=>{wh.style.transition='opacity .05s';wh.style.opacity='1';setTimeout(()=>{wh.style.transition='opacity .4s';wh.style.opacity='0';},80);},100);
+    glo.style.transition='opacity .3s';glo.style.opacity='1';setTimeout(()=>{glo.style.transition='opacity 2s';glo.style.opacity='.35';},300);
+  },80);
+}
+const robs=new IntersectionObserver(e=>{if(e[0].isIntersecting&&!retPlayed){retPlayed=true;setTimeout(doReturn,700);}},{threshold:.45});
+robs.observe($('rvis'));
+
+/* ════════════════════════════════════════════
+   FRACTAL CANVAS
+════════════════════════════════════════════ */
+(()=>{
+  const cv=$('fc'),ctx=cv.getContext('2d');
+  const resize=()=>{cv.width=cv.offsetWidth;cv.height=480};resize();
+  function bolt(ctx,x1,y1,x2,y2,r,d){
+    if(d<=0||(Math.abs(x2-x1)+Math.abs(y2-y1))<4){ctx.lineTo(x2,y2);return;}
+    const mx=(x1+x2)/2+(Math.random()-.5)*r,my=(y1+y2)/2+(Math.random()-.5)*r*.35;
+    bolt(ctx,x1,y1,mx,my,r*.5,d-1);
+    if(d>2&&Math.random()<.38){
+      const dx=x2-x1,dy=y2-y1,ga=ctx.globalAlpha;
+      ctx.moveTo(mx,my);ctx.globalAlpha=ga*.52;
+      bolt(ctx,mx,my,mx+(-dy*.44+(Math.random()-.5)*r*.5),my+(dx*.44+(Math.random()-.5)*r*.5),r*.4,d-2);
+      ctx.globalAlpha=ga;ctx.moveTo(mx,my);
+    }
+    bolt(ctx,mx,my,x2,y2,r*.5,d-1);
+  }
+  function draw(){
+    const W=cv.width,H=cv.height;
+    ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);
+    const ox=W/2+(Math.random()-.5)*55;
+    // glow
+    ctx.globalAlpha=.32;ctx.lineWidth=5;ctx.strokeStyle='#BF5FFF';ctx.shadowColor='#BF5FFF';ctx.shadowBlur=20;
+    ctx.beginPath();ctx.moveTo(ox,0);bolt(ctx,ox,0,ox+(Math.random()-.5)*120,H,115,7);ctx.stroke();ctx.shadowBlur=0;
+    // main
+    ctx.globalAlpha=.92;ctx.lineWidth=1.5;ctx.strokeStyle='#fff';
+    ctx.beginPath();ctx.moveTo(ox,0);bolt(ctx,ox,0,ox+(Math.random()-.5)*100,H,95,8);ctx.stroke();
+    ctx.globalAlpha=1;
+    ctx.fillStyle='rgba(191,95,255,.62)';ctx.font='10px IBM Plex Mono';ctx.textAlign='right';ctx.fillText('FRACTAL DIMENSION: 1.34–1.37 · LAPLACIAN GROWTH',W-10,H-12);
+  }
+  cv.onclick=draw;
+  const obs=new IntersectionObserver(e=>{if(e[0].isIntersecting){draw();obs.disconnect();}},{threshold:.2});
+  obs.observe(cv);
+})();
+
+/* ════════════════════════════════════════════
+   ENERGY INTERACTIVE
+════════════════════════════════════════════ */
+(()=>{
+  // build items
+  const container=$('eitems');
+  ENERGY_ITEMS.forEach((item,i)=>{
+    container.innerHTML+=`<div class="ei" id="ei${i}">
+      <span class="ei-n" id="ein${i}">${item.n}</span>
+      <span class="ei-ico">${item.ico}</span>
+      <div style="min-width:0">
+        <div class="ei-label th">${item.th} <span style="color:var(--ye);font-size:1.1em">${item.val} ${item.unit}</span></div>
+        <div class="ei-label en">${item.en} <span style="color:var(--ye);font-size:1.1em">${item.val} ${item.unit}</span></div>
+      </div>
+      <div></div>
+    </div>`;
+  });
+
+  const tk=$('etk'),hnd=$('ehnd'),fill=$('etf'),curNum=$('ecurnum'),wm=$('ewm');
+  let revealed=0,dragging=false,startY=0,startPct=0,pct=0;
+
+  function setRevealed(n){
+    revealed=Math.max(0,Math.min(5,n));
+    pct=revealed/5*100;
+    fill.style.height=pct+'%';
+    hnd.style.bottom=pct+'%';
+    curNum.textContent=String(revealed+1).padStart(2,'0');
+    wm.textContent=String(revealed+1).padStart(2,'0');
+    $('ecurnum').textContent=String(revealed+1).padStart(2,'0');
+    ENERGY_ITEMS.forEach((_,i)=>{
+      const el=$('ei'+i),en=$('ein'+i);
+      el.classList.remove('act','rev');
+      if(i===revealed){el.classList.add('act');en.classList.add('a');}
+      else if(i<revealed){el.classList.add('rev');en.classList.remove('a');}
+      else en.classList.remove('a');
+    });
+  }
+
+  function getTrackH(){return tk.clientHeight||300;}
+
+  hnd.addEventListener('mousedown',e=>{dragging=true;startY=e.clientY;startPct=revealed/5;e.preventDefault();});
+  hnd.addEventListener('touchstart',e=>{dragging=true;startY=e.touches[0].clientY;startPct=revealed/5;e.preventDefault();},{passive:false});
+  window.addEventListener('mousemove',e=>{
+    if(!dragging)return;
+    const dy=startY-e.clientY,frac=dy/getTrackH();
+    setRevealed(Math.round((startPct+frac)*5));
+  });
+  window.addEventListener('touchmove',e=>{
+    if(!dragging)return;
+    const dy=startY-e.touches[0].clientY,frac=dy/getTrackH();
+    setRevealed(Math.round((startPct+frac)*5));
+  },{passive:true});
+  window.addEventListener('mouseup',()=>dragging=false);
+  window.addEventListener('touchend',()=>dragging=false);
+  setRevealed(0);
+})();
+
+/* ════════════════════════════════════════════
+   BODY INTERACTIVE
+════════════════════════════════════════════ */
+(()=>{
+  const tabs=$('btabs');
+  BODY_ZONES.forEach((z,i)=>{
+    const b=document.createElement('button');
+    b.className='btab'+(i===0?' a':'');
+    b.innerHTML=`<span class="btab-icon">${z.icon}</span><span class="btab-name">${z.lbl}</span><span class="btab-sub">${z.sub}</span>`;
+    b.onclick=()=>selectZone(z,b);tabs.appendChild(b);
+  });
+
+  function selectZone(z,btn){
+    document.querySelectorAll('.btab').forEach(b=>b.classList.remove('a'));
+    btn.classList.add('a');
+    $('bpt').textContent=z.t;$('bpt').style.color=z.col;
+    $('bpbth').textContent=z.th;$('bpben').textContent=z.en;
+    const d=$('bpd');d.style.display='block';d.style.borderColor=z.col;d.textContent=z.d;
+    // highlight on SVG with zone color
+    const ids=['hl-brain','hl-heart','hl-skin','hl-burns'];
+    ids.forEach(id=>{
+      const el=document.getElementById(id);if(!el)return;
+      if(id===z.hl){
+        if(id==='hl-burns'){el.style.opacity='1';}
+        else{
+          const col=z.col;
+          el.setAttribute('stroke',col);
+          el.setAttribute('fill',col.replace(')',',0.08)').replace('rgb','rgba').replace('#','rgba(').replace(/^rgba\(([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2}),/i,(_,r,g,b)=>`rgba(${parseInt(r,16)},${parseInt(g,16)},${parseInt(b,16)},`));
+          // simpler approach: just use inline style
+          el.style.stroke=col; el.style.strokeOpacity='0.85';
+          el.style.fill=col; el.style.fillOpacity='0.08';
+          el.style.filter='url(#rdglow)';
+        }
+      }else{
+        if(id==='hl-burns'){el.style.opacity='0';}
+        else{el.style.strokeOpacity='0';el.style.fillOpacity='0';el.style.filter='';}
+      }
+    });
+  }
+  selectZone(BODY_ZONES[0],tabs.querySelector('.btab'));
+})();
+
+/* ════════════════════════════════════════════
+   STATS
+════════════════════════════════════════════ */
+(()=>{
+  const sg=$('sgrid');
+  STATS.forEach(s=>sg.innerHTML+=`<div class="sc-card"><div class="sc-n" style="color:${s.c}">${s.n}</div><div class="sc-u">${s.u}</div><div class="sc-d"><span class="th">${s.th}</span><span class="en">${s.en}</span></div></div>`);
+  const hg=$('hsgrid');
+  HOTSPOTS.forEach(h=>hg.innerHTML+=`<div class="hs" style="border-color:rgba(255,255,255,.06)"><div class="hs-r" style="color:${h.c}30">${h.r}</div><div class="hs-n" style="color:${h.c}">${h.n}</div><div class="hs-l">${h.l}</div><div class="hs-d"><span class="th">${h.th}</span><span class="en">${h.en}</span></div></div>`);
+})();
+
+/* ════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════ */
+setLang('th');
+</script>
+</body>
+</html>
