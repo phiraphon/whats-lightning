@@ -202,7 +202,7 @@ section{padding:100px 7%;position:relative}
 .eg-tw{flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:280px}
 .eg-tk{width:2px;background:rgba(255,255,255,.1);position:relative;cursor:ns-resize;
   user-select:none;touch-action:none;height:100%}
-.eg-tf{position:absolute;bottom:0;left:0;right:0;background:var(--ye);transition:height .25s ease}
+.eg-tf{position:absolute;bottom:0;left:0;background:var(--ye);transition:height .25s ease,width .25s ease}
 .eg-tick{position:absolute;right:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;
   letter-spacing:1px;color:rgba(255,255,255,.18);transform:translateY(50%);white-space:nowrap}
 .eg-hnd{position:absolute;left:50%;transform:translateX(-50%);width:26px;height:26px;
@@ -397,39 +397,39 @@ footer p{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px
         <!-- callout: + zone -->
         <line x1="284" y1="96" x2="300" y2="96" stroke="rgba(0,229,255,.28)" stroke-width="1"/>
         <circle cx="284" cy="96" r="2" fill="rgba(0,229,255,.5)"/>
-        <text x="304" y="93" fill="rgba(255,255,255,.62)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุบวก (Anvil)</text>
+        <text class="th" x="304" y="93" fill="rgba(255,255,255,.62)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุบวก (Anvil)</text><text class="en" x="304" y="93" fill="rgba(255,255,255,.62)" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="0.5">Positive Charge (Anvil)</text>
         <text x="304" y="106" fill="rgba(0,229,255,.38)" font-family="IBM Plex Mono" font-size="8" letter-spacing="1">POSITIVE CHARGE ZONE</text>
         <!-- callout: − zone -->
         <line x1="284" y1="206" x2="300" y2="206" stroke="rgba(255,45,85,.28)" stroke-width="1"/>
         <circle cx="284" cy="206" r="2" fill="rgba(255,45,85,.5)"/>
-        <text x="304" y="203" fill="rgba(255,255,255,.62)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุลบหลัก</text>
+        <text class="th" x="304" y="203" fill="rgba(255,255,255,.62)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุลบหลัก</text><text class="en" x="304" y="203" fill="rgba(255,255,255,.62)" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="0.5">Primary Negative Zone</text>
         <text x="304" y="216" fill="rgba(255,45,85,.38)" font-family="IBM Plex Mono" font-size="8" letter-spacing="1">PRIMARY NEGATIVE ZONE</text>
         <!-- callout: small + -->
         <line x1="284" y1="282" x2="300" y2="282" stroke="rgba(0,229,255,.2)" stroke-width="1"/>
         <circle cx="284" cy="282" r="2" fill="rgba(0,229,255,.35)"/>
-        <text x="304" y="279" fill="rgba(255,255,255,.48)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุบวกเล็ก</text>
+        <text class="th" x="304" y="279" fill="rgba(255,255,255,.48)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">ประจุบวกเล็ก</text><text class="en" x="304" y="279" fill="rgba(255,255,255,.48)" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="0.5">Lower + Pocket Zone</text>
         <text x="304" y="292" fill="rgba(0,229,255,.28)" font-family="IBM Plex Mono" font-size="8" letter-spacing="1">LOWER + POCKET</text>
         <!-- callout: channel -->
         <line x1="165" y1="355" x2="220" y2="355" stroke="rgba(0,229,255,.18)" stroke-width="1"/>
-        <text x="224" y="352" fill="rgba(255,255,255,.42)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">เส้นทางฟ้าผ่า</text>
+        <text class="th" x="224" y="352" fill="rgba(255,255,255,.42)" font-family="Noto Sans Thai,sans-serif" font-size="9.5">เส้นทางฟ้าผ่า</text><text class="en" x="224" y="352" fill="rgba(255,255,255,.42)" font-family="IBM Plex Mono" font-size="8.5" letter-spacing="0.5">Lightning Channel</text>
         <text x="224" y="365" fill="rgba(0,229,255,.28)" font-family="IBM Plex Mono" font-size="8" letter-spacing="1">LIGHTNING CHANNEL</text>
       </svg>
     </div>
     <div class="facts">
       <div class="fc rv d1"><div class="fc-val">TRIPOLAR</div>
-        <p class="fc-lbl">โครงสร้างสามขั้วประจุ</p>
+        <p class="fc-lbl th">โครงสร้างสามขั้วประจุ</p><p class="fc-lbl en">Tripolar Structure</p>
         <p class="fc-desc th">สนามไฟฟ้าสามชั้นในเมฆพายุ — ประจุบวก (+) ที่ยอดเมฆ ประจุลบ (−) ตรงกลาง และประจุบวกขนาดเล็กที่ฐานเมฆ สร้างเงื่อนไขที่จำเป็นทั้งหมดสำหรับการเกิดฟ้าผ่า</p>
         <p class="fc-desc en">Three charge layers inside a storm: + at anvil, − in mid-tower, + at base. This tripolar structure creates the electrical conditions necessary for lightning.</p></div>
       <div class="fc rv d2"><div class="fc-val">−15° TO −25°<span class="u">°C</span></div>
-        <p class="fc-lbl">โซนสร้างประจุหลัก</p>
+        <p class="fc-lbl th">โซนสร้างประจุหลัก</p><p class="fc-lbl en">Primary Charge Zone</p>
         <p class="fc-desc th">ช่วงอุณหภูมิที่ผลึกน้ำแข็งปะทะกับลูกเห็บอ่อน (Graupel) แล้วถ่ายเทอิเล็กตรอนระหว่างกัน ทำให้เกิดการแยกประจุไฟฟ้าที่ก่อให้เกิดฟ้าผ่า</p>
         <p class="fc-desc en">Temperature range where graupel–ice crystal collisions transfer electrons, generating the charge separation that drives lightning formation.</p></div>
       <div class="fc rv d3"><div class="fc-val">100<span class="u">kV/m</span></div>
-        <p class="fc-lbl">สนามไฟฟ้าก่อนฟ้าผ่า</p>
+        <p class="fc-lbl th">สนามไฟฟ้าก่อนฟ้าผ่า</p><p class="fc-lbl en">Pre-lightning Electric Field</p>
         <p class="fc-desc th">ความเข้มสนามไฟฟ้าใกล้พื้นผิวโลกก่อนเกิด Return Stroke สูงถึง 100 กิโลโวลต์ต่อเมตร — มากกว่าสภาวะอากาศปกติถึง 1,000 เท่า</p>
         <p class="fc-desc en">Electric field strength near ground before a return stroke — approximately 1,000× greater than fair-weather atmospheric field strength.</p></div>
       <div class="fc rv d4"><div class="fc-val">50<span class="u">m/step</span></div>
-        <p class="fc-lbl">ระยะก้าวของลำประจุ</p>
+        <p class="fc-lbl th">ระยะก้าวของลำประจุ</p><p class="fc-lbl en">Stepped Leader Advance Rate</p>
         <p class="fc-desc th">แต่ละก้าวของ Stepped Leader เคลื่อนที่ลงสู่พื้นดินครั้งละ ~50 เมตร แล้วหยุดพัก 50 ไมโครวินาทีก่อนก้าวต่อไป ทำให้การเคลื่อนที่เป็นช่วงๆ ไม่ต่อเนื่อง</p>
         <p class="fc-desc en">Each stepped leader segment advances ~50 m, pausing 50 microseconds between steps — creating the distinctive non-continuous stepped propagation pattern.</p></div>
     </div>
@@ -662,37 +662,37 @@ const STEPS=[
   {n:'01',t:'CHARGE SEPARATION',fig:'CHARGE SEPARATION',
    th:'ภายในเมฆคิวมูโลนิมบัส กระแสอากาศร้อนชื้น (Updraft) พาผลึกน้ำแข็งขึ้นสูง ขณะที่ลูกเห็บอ่อน (Graupel) ที่หนักกว่าตกลงมา เมื่อปะทะกันในโซน −15°C ถึง −25°C อิเล็กตรอนจะถ่ายเทระหว่างอนุภาค สร้างการแยกประจุไฟฟ้าในเมฆ',
    en:'Inside a cumulonimbus cloud, warm updrafts carry ice crystals upward while heavier graupel falls. Collisions in the −15°C to −25°C zone transfer electrons between particles, creating charge separation across cloud layers.',
-   chips:['−15°C TO −25°C · Collision Zone','Updraft vs Downdraft · Charge Transfer'],
+   chips:[{th:'−15°C TO −25°C · โซน Collision',en:'−15°C TO −25°C · Collision Zone'},{th:'Updraft vs Downdraft · การถ่ายเทประจุ',en:'Updraft vs Downdraft · Charge Transfer'}],
    draw:'charges'},
   {n:'02',t:'ELECTRIC FIELD',fig:'ELECTRIC FIELD DISTRIBUTION',
    th:'สนามไฟฟ้าสะสมพลังงานในชั้นบรรยากาศ ขณะที่ประจุลบในเมฆสะสมมากขึ้น แรงผลักระหว่างประจุสร้างสนามไฟฟ้าที่มีความเข้มสูงจนถึงจุดพักที่อากาศไม่สามารถต้านทานได้อีกต่อไป',
    en:'As charges separate, an intense electric field builds between the negative cloud base and the positively induced ground. The field reaches the critical breakdown threshold of ≥3 MV/m.',
-   chips:['ความเข้มสนาม <b>100 kV/m</b> · Near Ground','Breakdown Threshold <b>≥ 3 MV/m</b>'],
+   chips:[{th:'ความเข้มสนาม <b>100 kV/m</b> · ใกล้พื้นดิน',en:'Field Intensity <b>100 kV/m</b> · Near Ground'},{th:'จุดสลายตัว ≥ 3 MV/m',en:'Breakdown Threshold ≥ 3 MV/m'}],
    draw:'efield'},
   {n:'03',t:'ELECTRON AVALANCHE',fig:'IONIZATION PROCESS',
    th:'เมื่อสนามไฟฟ้าแรงพอ อิเล็กตรอนอิสระถูกเร่งจนชนกับโมเลกุลอากาศ ปลดปล่อยอิเล็กตรอนเพิ่มขึ้นเป็นทวีคูณ กลายเป็นปฏิกิริยาลูกโซ่ Electron Avalanche อากาศเปลี่ยนเป็น Plasma สถานะที่สี่ของสสาร',
    en:'Free electrons accelerate in the intense field, colliding with air molecules to release more electrons exponentially — the Electron Avalanche. Air transforms from insulator to electrically conductive plasma.',
-   chips:['อากาศ: Gas → <b>Plasma</b> (สถานะที่ 4)','Electron Avalanche · Chain Reaction'],
+   chips:[{th:'อากาศ: Gas → <b>Plasma</b> (สถานะที่ 4)',en:'Air: Gas → <b>Plasma</b> (4th State of Matter)'},{th:'Electron Avalanche · ปฏิกิริยาลูกโซ่',en:'Electron Avalanche · Chain Reaction'}],
    draw:'avalanche'},
   {n:'04',t:'STEPPED LEADER',fig:'STEPPED LEADER PROPAGATION',
    th:'ลำประจุลบ (Stepped Leader) เริ่มเคลื่อนที่จากเมฆสู่พื้นดิน โดยเดินเป็นก้าวๆ ครั้งละ ~50 เมตร หยุดพัก 50 ไมโครวินาทีระหว่างก้าว แตกกิ่งก้านสาขาเพื่อค้นหาเส้นทางที่มีความต้านทานไฟฟ้าต่ำที่สุด',
    en:'A negatively charged plasma channel extends from the cloud in discrete steps of ~50 meters each, pausing 50 microseconds between steps. It continuously branches, seeking the path of least electrical resistance.',
-   chips:['~50 m / step · 50 µs pause','Speed: ~200,000 m/s · Branching Path'],
+   chips:[{th:'~50 m / step · หยุดพัก 50 µs',en:'~50 m / step · 50 µs pause'},{th:'ความเร็ว ~200,000 m/s · แตกกิ่งก้าน',en:'Speed: ~200,000 m/s · Branching Path'}],
    draw:'leader'},
   {n:'05',t:'STREAMER',fig:'STREAMER FORMATION',
    th:'เมื่อ Stepped Leader เข้าใกล้พื้นดินในระยะ ~100 เมตร สนามไฟฟ้าที่ปลายลำประจุรุนแรงมากจนดึงประจุบวกจากวัตถุสูงเด่นบนพื้น เช่น ต้นไม้ ตึก หรือร่างกายมนุษย์ ให้พุ่งขึ้นเป็น Streamer',
    en:'As the Stepped Leader approaches within ~100m, its intense electric field draws positive charges upward from tall objects — trees, buildings, even people — creating rising Streamers.',
-   chips:['ระยะห่าง ~100 m · Positive Channel Rising','วัตถุสูงเด่น = เสี่ยงกว่า · Tall objects = Higher risk'],
+   chips:[{th:'ระยะห่าง ~100 m · ประจุบวกพุ่งขึ้น',en:'Distance ~100 m · Positive Channel Rising'},{th:'วัตถุสูงเด่น = เสี่ยงกว่า',en:'Tall objects = Higher risk'}],
    draw:'streamer'},
   {n:'06',t:'CONNECTION',fig:'CIRCUIT COMPLETION',
    th:'Stepped Leader จากฟ้าและ Streamer จากพื้นดินบรรจบกัน วงจรไฟฟ้าสมบูรณ์ ช่องทาง Plasma เชื่อมระหว่างเมฆกับพื้นดิน พร้อมสำหรับการคายประจุมหาศาลในเสี้ยววินาที',
    en:'The descending Stepped Leader and rising Streamer make contact. The circuit is complete — a continuous plasma channel connects cloud to ground. Massive discharge is imminent.',
-   chips:['วงจรสมบูรณ์ · Plasma Channel Formed','ทุกอย่างเกิดขึ้นก่อนตาเห็นแสง · Before the visible flash'],
+   chips:[{th:'วงจรสมบูรณ์ · ช่องทาง Plasma ก่อตัว',en:'Circuit Complete · Plasma Channel Formed'},{th:'เกิดก่อนที่ตาเห็นแสง',en:'Before the visible flash'}],
    draw:'connection'},
   {n:'07',t:'RETURN STROKE',fig:'RETURN STROKE DISCHARGE',
    th:'ประจุบวกจากพื้นดินไหลกลับขึ้นตามช่องทาง Plasma ด้วยความเร็ว 1/3–1/2 ของความเร็วแสง คือสิ่งที่มนุษย์มองเห็นเป็นแสงวาบ! ช่องทางร้อนถึง 30,000°C อากาศขยายตัวเร็วกว่าเสียงจนเกิดฟ้าร้อง',
    en:'Positive charge surges UPWARD through the plasma channel at 1/3–1/2 the speed of light — THIS is the flash we see! The channel reaches 30,000°C, causing supersonic air expansion that creates thunder.',
-   chips:['<b>30,000°C</b> · 5× ร้อนกว่าดวงอาทิตย์','<b>1/3–1/2 C</b> · ความเร็วแสง · ขึ้น ไม่ใช่ลง!'],
+   chips:[{th:'<b>30,000°C</b> · 5× ร้อนกว่าดวงอาทิตย์',en:'<b>30,000°C</b> · 5× Hotter than the Sun'},{th:'<b>1/3–1/2 ความเร็วแสง</b> · พุ่งขึ้น ไม่ใช่ลง!',en:'<b>1/3–1/2 Speed of Light</b> · UPWARD, not down!'}],
    draw:'return'},
 ];
 
@@ -728,22 +728,22 @@ const BODY_ZONES=[
    t:'NERVOUS SYSTEM',
    th:'กระแสไฟฟ้าผ่านระบบประสาทซึ่งมีความต้านทานต่ำ ทำให้เกิดอาการหมดสติ อัมพาตชั่วคราว (Keraunoparalysis) และความจำเสื่อมถอยหลัง (Retrograde Amnesia) ระบบประสาทได้รับผลกระทบรุนแรงที่สุดในบรรดาอวัยวะทั้งหมด',
    en:'Current travels through the low-resistance nervous system, causing loss of consciousness, temporary paralysis (Keraunoparalysis), and retrograde amnesia. The nervous system is the most severely impacted organ system.',
-   d:'ความต้านทานไฟฟ้าต่ำมาก → ผลกระทบรุนแรงสุด\nLow resistance path: nerves → spine → brain'},
+   d_th:'ความต้านทานไฟฟ้าต่ำมาก → ผลกระทบรุนแรงสุด\nเส้นทางกระแสหลัก: เส้นประสาท → ไขสันหลัง → สมอง',d_en:'Very low electrical resistance → most severe damage\nPrimary path: nerves → spine → brain'},
   {id:'heart',lbl:'HEART',icon:'❤️',sub:'Cardiac Arrest',col:'#FF2D55',hl:'hl-heart',
    t:'CARDIAC ARREST',
    th:'ภาวะหัวใจหยุดเต้น (Asystole) เป็นสาเหตุการเสียชีวิตที่พบบ่อยที่สุด กระแสไฟฟ้ามหาศาลขัดขวางสัญญาณไฟฟ้าธรรมชาติของหัวใจ ต้องทำ CPR ทันทีเพื่อโอกาสรอดชีวิต',
    en:'Asystole (cardiac arrest) is the most common cause of lightning fatality. Massive current overrides the heart\'s natural electrical signals. Immediate CPR is critical for survival.',
-   d:'Asystole = Primary cause of death\nImmediate CPR required · AED if available'},
+   d_th:'Asystole = สาเหตุการเสียชีวิตหลัก\nต้องทำ CPR ทันที · ใช้ AED ถ้ามี',d_en:'Asystole = Primary cause of death\nImmediate CPR required · AED if available'},
   {id:'skin',lbl:'SKIN',icon:'🌿',sub:'Lichtenberg Figures',col:'#FF5C00',hl:'hl-skin',
    t:'LICHTENBERG FIGURES',
    th:'รอยแผลเป็นรูปกิ่งก้านเฟิร์น (Lichtenberg Figures) บนผิวหนัง เกิดจากการที่กระแสไฟฟ้าทำให้เม็ดเลือดแดงรั่วออกจากหลอดเลือดฝอย ไม่ใช่รอยไหม้ถาวร ปรากฏภายใน 1 ชั่วโมง จางหายใน 24–48 ชั่วโมง',
    en:'Fern-like branching skin marks form when current causes red blood cell leakage from capillaries (dielectric skin degradation). Not permanent burns — appear within 1 hour, fade in 24–48 hours.',
-   d:'ปรากฏใน ~1 ชั่วโมง · จางหายใน 24–48 ชั่วโมง\nNot a thermal burn — capillary rupture from current'},
+   d_th:'ปรากฏใน ~1 ชั่วโมง · จางหายใน 24–48 ชั่วโมง\nไม่ใช่รอยไหม้ — เป็นการแตกของหลอดเลือดฝอย',d_en:'Appear within ~1 hour · Fade in 24–48 hours\nNot a thermal burn — capillary rupture from current'},
   {id:'burns',lbl:'BURNS',icon:'🔥',sub:'3 Types',col:'#FFE600',hl:'hl-burns',
    t:'3 TYPES OF BURNS',
    th:'1) Linear Burns — รอยไหม้เป็นเส้น จากการระเหยของเหงื่อบนผิวหนัง\n2) Punctate Burns — รอยจุดที่จุดเข้า-ออกของกระแสไฟฟ้า\n3) Thermal Burns — จากโลหะ เครื่องประดับ หรือซิปที่ร้อนจัดจนละลาย',
    en:'1) Linear Burns — parallel streaks from rapid sweat evaporation\n2) Punctate Burns — small circular wounds at entry/exit points\n3) Thermal Burns — from metal jewelry, belt buckles, or zippers superheated by current',
-   d:'โลหะที่สวมใส่เสี่ยงเกิด Thermal Burns\nMetal accessories are high thermal burn risk'},
+   d_th:'โลหะที่สวมใส่เสี่ยงเกิด Thermal Burns\nเครื่องประดับ สายรัด หัวเข็มขัด = จุดเสี่ยงสูง',d_en:'Metal accessories are high thermal burn risk\nJewelry, belt buckles, and zippers = high risk sites'},
 ];
 
 const STATS=[
@@ -775,6 +775,13 @@ let lang='th';
 function setLang(l){
   lang=l;
   document.documentElement.className=l;
+  ['th','en'].forEach(cls=>{
+    document.querySelectorAll('.'+cls).forEach(el=>{
+      const show=el.classList.contains(l);
+      const isSVG=el.namespaceURI==='http://www.w3.org/2000/svg';
+      el.style.display=show?(isSVG||el.tagName==='SPAN'?'inline':'block'):'none';
+    });
+  });
   document.querySelectorAll('.lang-btn').forEach((b,i)=>b.classList.toggle('active',i===(l==='th'?0:1)));
 }
 
@@ -951,7 +958,11 @@ document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
     $('spr').textContent=`STEP ${i+1} OF 7`;
     $('sn').textContent=s.n;$('st2').textContent=s.t;
     $('sbth').textContent=s.th;$('sben').textContent=s.en;
-    $('schips').innerHTML=s.chips.map(c=>`<div class="s-chip">${c}</div>`).join('');
+    $('schips').innerHTML=s.chips.map(c=>
+      `<div class="s-chip"><span class="th">${c.th}</span><span class="en">${c.en}</span></div>`
+    ).join('');
+    // Re-apply current language to newly generated chip content
+    setLang(lang);
     document.querySelectorAll('.sd').forEach((d,j)=>d.classList.toggle('a',j===i));
     drawStep(i);
   }
@@ -1117,7 +1128,7 @@ function doReturn(){
   const bar=$('rbar'),glo=$('rglo'),wh=$('rwh'),lbl=$('rlbl');
   bar.style.transition='none';bar.style.height='0';glo.style.opacity='0';glo.style.animation='none';wh.style.opacity='0';wh.style.animation='none';
   void bar.offsetWidth;
-  lbl.textContent='30,000°C · 1/3 ความเร็วแสง';lbl.style.color='#FF5C00';
+  lbl.textContent=lang==='en'?'30,000°C · 1/3 Speed of Light':'30,000°C · 1/3 ความเร็วแสง';lbl.style.color='#FF5C00';
   setTimeout(()=>{
     bar.style.transition='height .12s ease-out';bar.style.height='100%';
     setTimeout(()=>{wh.style.transition='opacity .05s';wh.style.opacity='1';setTimeout(()=>{wh.style.transition='opacity .4s';wh.style.opacity='0';},80);},100);
@@ -1182,16 +1193,25 @@ robs.observe($('rvis'));
   });
 
   const tk=$('etk'),hnd=$('ehnd'),fill=$('etf'),curNum=$('ecurnum'),wm=$('ewm');
-  let revealed=0,dragging=false,startY=0,startPct=0,pct=0;
+  let revealed=0,dragging=false,startPos=0,startPct=0;
+
+  function isH(){return window.innerWidth<=900;}
+  function trackSize(){return isH()?(tk.clientWidth||280):(tk.clientHeight||300);}
 
   function setRevealed(n){
     revealed=Math.max(0,Math.min(5,n));
-    pct=revealed/5*100;
-    fill.style.height=pct+'%';
-    hnd.style.bottom=pct+'%';
-    curNum.textContent=String(revealed+1).padStart(2,'0');
-    wm.textContent=String(revealed+1).padStart(2,'0');
+    const pct=revealed/5*100;
+    if(isH()){
+      fill.style.width=pct+'%';fill.style.height='100%';
+      hnd.style.left=pct+'%';hnd.style.bottom='auto';
+      hnd.style.top='50%';hnd.style.transform='translate(-50%,-50%)';
+    }else{
+      fill.style.height=pct+'%';fill.style.width='';
+      hnd.style.bottom=pct+'%';hnd.style.left='50%';
+      hnd.style.top='auto';hnd.style.transform='translateX(-50%)';
+    }
     $('ecurnum').textContent=String(revealed+1).padStart(2,'0');
+    wm.textContent=String(revealed+1).padStart(2,'0');
     ENERGY_ITEMS.forEach((_,i)=>{
       const el=$('ei'+i),en=$('ein'+i);
       el.classList.remove('act','rev');
@@ -1201,19 +1221,20 @@ robs.observe($('rvis'));
     });
   }
 
-  function getTrackH(){return tk.clientHeight||300;}
+  function getPos(e){return isH()?e.clientX:e.clientY;}
+  function getTPos(e){return isH()?e.touches[0].clientX:e.touches[0].clientY;}
 
-  hnd.addEventListener('mousedown',e=>{dragging=true;startY=e.clientY;startPct=revealed/5;e.preventDefault();});
-  hnd.addEventListener('touchstart',e=>{dragging=true;startY=e.touches[0].clientY;startPct=revealed/5;e.preventDefault();},{passive:false});
+  hnd.addEventListener('mousedown',e=>{dragging=true;startPos=getPos(e);startPct=revealed/5;e.preventDefault();});
+  hnd.addEventListener('touchstart',e=>{dragging=true;startPos=getTPos(e);startPct=revealed/5;e.preventDefault();},{passive:false});
   window.addEventListener('mousemove',e=>{
     if(!dragging)return;
-    const dy=startY-e.clientY,frac=dy/getTrackH();
-    setRevealed(Math.round((startPct+frac)*5));
+    const delta=isH()?(getPos(e)-startPos):(startPos-getPos(e));
+    setRevealed(Math.round((startPct+delta/trackSize())*5));
   });
   window.addEventListener('touchmove',e=>{
     if(!dragging)return;
-    const dy=startY-e.touches[0].clientY,frac=dy/getTrackH();
-    setRevealed(Math.round((startPct+frac)*5));
+    const delta=isH()?(getTPos(e)-startPos):(startPos-getTPos(e));
+    setRevealed(Math.round((startPct+delta/trackSize())*5));
   },{passive:true});
   window.addEventListener('mouseup',()=>dragging=false);
   window.addEventListener('touchend',()=>dragging=false);
@@ -1237,7 +1258,9 @@ robs.observe($('rvis'));
     btn.classList.add('a');
     $('bpt').textContent=z.t;$('bpt').style.color=z.col;
     $('bpbth').textContent=z.th;$('bpben').textContent=z.en;
-    const d=$('bpd');d.style.display='block';d.style.borderColor=z.col;d.textContent=z.d;
+    const d=$('bpd');d.style.display='block';d.style.borderColor=z.col;
+    d.innerHTML=`<span class="th">${z.d_th}</span><span class="en">${z.d_en}</span>`;
+    setLang(lang);
     // highlight on SVG with zone color
     const ids=['hl-brain','hl-heart','hl-skin','hl-burns'];
     ids.forEach(id=>{
@@ -1275,6 +1298,7 @@ robs.observe($('rvis'));
 /* ════════════════════════════════════════════
    INIT
 ════════════════════════════════════════════ */
+// Run after all dynamic content is generated
 setLang('th');
 </script>
 </body>
